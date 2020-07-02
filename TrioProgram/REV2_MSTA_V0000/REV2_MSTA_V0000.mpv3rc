@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Contents>
+  <Content Name="Controller">
+    <Controller>
+      <DigitalLines>
+        <Line Index="0" Direction="Input" Name="i_infeed_sensor" />
+        <Line Index="1" Direction="Input" Name="i_reg_film_sensor" />
+        <Line Index="2" Direction="Input" Name="i_trf_in_limit" />
+        <Line Index="3" Direction="Input" Name="i_seal_home_sensor" />
+        <Line Index="4" Direction="Input" Name="i_jaws_home_sensor" />
+        <Line Index="10" Direction="BiDirectional" Name="o_printer_signal" />
+        <Line Index="6" Direction="Input" Name="i_pack_crush_sensor" />
+        <Line Index="16" Direction="Output" Name="o_resistor_fan_1" />
+        <Line Index="12" Direction="BiDirectional" Name="o_infeed_sen_teach" />
+        <Line Index="13" Direction="BiDirectional" Name="o_flashing_reset" />
+        <Line Index="14" Direction="BiDirectional" Name="o_magnets_ssr" />
+        <Line Index="15" Direction="BiDirectional" Name="o_heater_contactor" />
+        <Line Index="16" Direction="Input" Name="i_start_pb" />
+        <Line Index="17" Direction="Input" Name="i_stop_pb" />
+        <Line Index="18" Direction="Input" Name="i_reset_pb" />
+        <Line Index="19" Direction="Input" Name="i_estop_outfeed" />
+        <Line Index="20" Direction="Input" Name="i_guard_frt_lf" />
+        <Line Index="21" Direction="Input" Name="i_guard_frt_rg" />
+        <Line Index="22" Direction="Input" Name="i_guard_rear_lf" />
+        <Line Index="23" Direction="Input" Name="i_guard_rear_rg" />
+        <Line Index="24" Direction="Input" Name="i_estop_outfeed1" />
+        <Line Index="25" Direction="Input" Name="i_guard_outfeed_drop_front" />
+        <Line Index="26" Direction="Input" Name="i_guard_outfeed_drop_rear" />
+        <Line Index="27" Direction="Input" Name="i_guard_infeed_1" />
+        <Line Index="28" Direction="Input" Name="i_guard_infeed_2" />
+        <Line Index="29" Direction="Input" Name="i_guard_infeed_drop_front" />
+        <Line Index="30" Direction="Input" Name="i_guard_infeed_drop_rear" />
+        <Line Index="34" Direction="Input" Name="i_safety_infeed" />
+        <Line Index="35" Direction="Input" Name="i_safety_general" />
+        <Line Index="36" Direction="Input" Name="i_safety_fill_conv" />
+        <Line Index="38" Direction="Input" Name="i_printer_error" />
+        <Line Index="39" Direction="Input" Name="i_seal_limit_sw" />
+        <Line Index="37" Direction="Input" Name="i_next_mc_ok" />
+        <Line Index="40" Direction="Input" Name="i_trf_out_limit" />
+        <Line Index="41" Direction="Input" Name="i_gas_pressure_sw" />
+        <Line Index="44" Direction="Input" Name="i_labeler_alarm" />
+        <Line Index="47" Direction="Input" Name="i_previous_machine_healthy" />
+        <Line Index="17" Direction="Output" Name="o_resistor_fan_2" />
+        <Line Index="18" Direction="Output" Name="o_gas_isol1" />
+        <Line Index="19" Direction="Output" Name="o_gas_isol2" />
+        <Line Index="20" Direction="Output" Name="o_gas_valve1" />
+        <Line Index="21" Direction="Output" Name="o_gas_valve2" />
+        <Line Index="22" Direction="Output" Name="o_fan_cub" />
+        <Line Index="24" Direction="Output" Name="o_mc_running" />
+        <Line Index="25" Direction="Output" Name="o_mc_ok" />
+        <Line Index="26" Direction="Output" Name="o_fill_cnv_running" />
+        <Line Index="27" Direction="Output" Name="o_beacon_green" />
+        <Line Index="28" Direction="Output" Name="o_beacon_amber" />
+        <Line Index="29" Direction="Output" Name="o_vac_pump_relay" />
+        <Line Index="31" Direction="Output" Name="o_beacon_red" />
+      </DigitalLines>
+    </Controller>
+  </Content>
+</Contents>

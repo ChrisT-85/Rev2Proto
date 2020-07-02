@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Version="1" VersionMinor="1" ProductId="400" ProductName="MC400">
+    <Environment>
+        <Software SoftwareVersion="4.4.1.19638" />
+        <Controller ControllerVersion="2.0299" ControllerFPGAVersion="0">
+            <Modules />
+        </Controller>
+    </Environment>
+    <Items>
+        <Item Type="basic" Name="AUTO_TENSION_V100" FileName="AUTO_TENSION_V100.BAS" Storage="internalStorage" Autorun="0" IsAutorun="False" />
+        <Item Type="textFile" Name="EC_EXTEND" FileName="EC_EXTEND.TXT" Storage="internalStorage" />
+        <Item Type="basic" Name="FILMFEED_V100" FileName="FILMFEED_V100.BAS" Storage="internalStorage" Autorun="0" IsAutorun="False" />
+        <Item Type="basic" Name="INCLUDE_IO" FileName="INCLUDE_IO.BAS" Storage="internalStorage" Autorun="0" IsAutorun="False" />
+        <Item Type="mcConfig" Name="MC_CONFIG" FileName="MC_CONFIG.MCC" Storage="internalStorage" />
+        <Item Type="basic" Name="REWIND_V100" FileName="REWIND_V100.BAS" Storage="internalStorage" Autorun="0" IsAutorun="False" />
+        <Item Type="basic" Name="STARTUP_V100" FileName="STARTUP_V100.BAS" Storage="internalStorage" Autorun="0" IsAutorun="False" />
+    </Items>
+</Project>
