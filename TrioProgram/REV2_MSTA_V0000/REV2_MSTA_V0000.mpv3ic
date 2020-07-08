@@ -14,7 +14,6 @@
   </Content>
   <Content Name="Document_Program_FILMFEED_V100" />
   <Content Name="Document_Program_REWIND_V100" />
-  <Content Name="Document_Program_INCLUDE_IO" />
   <Content Name="tool_FindReplaceWindow">
     <Tool MainMode="FindInProject">
       <Options MatchWholeWord="false" MatchCase="false" SearchUp="false" UseRegularExpressions="false">
@@ -291,4 +290,29 @@
       </Categories>
     </CoEInfo>
   </Content>
+  <Content Name="Document_Program_MAIN" />
+  <Content Name="tool_AxisParametersControl">
+    <Tool IsPeriodicUpdateEnabled="true" DisplayAs="0">
+      <AxesInUse>
+        <Index>0</Index>
+        <Index>1</Index>
+        <Index>2</Index>
+        <Index>5</Index>
+      </AxesInUse>
+    </Tool>
+  </Content>
+  <Content Name="tool_VRViewerControl">
+    <Tool IsPeriodicUpdateEnabled="true">
+      <Ranges>
+        <Range StartAddress="0" EndAddress="100" IsExpanded="true" Description="" />
+      </Ranges>
+    </Tool>
+  </Content>
+  <Content Name="TableRangeEditDlgSettings">
+    <RecentRanges_VR>
+      <Range StartAddress="0" EndAddress="100" Description="" />
+    </RecentRanges_VR>
+  </Content>
+  <Content Name="Document_Program_JAWS_TEST" />
+  <Content Name="Document_Program_HMI" />
 </Contents>

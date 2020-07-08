@@ -10,7 +10,9 @@
         <Item Type="basic" Name="AUTO_TENSION_V100" FileName="AUTO_TENSION_V100.BAS" Storage="internalStorage" Autorun="0" IsAutorun="False" />
         <Item Type="textFile" Name="EC_EXTEND" FileName="EC_EXTEND.TXT" Storage="internalStorage" />
         <Item Type="basic" Name="FILMFEED_V100" FileName="FILMFEED_V100.BAS" Storage="internalStorage" Autorun="0" IsAutorun="False" />
-        <Item Type="basic" Name="INCLUDE_IO" FileName="INCLUDE_IO.BAS" Storage="internalStorage" Autorun="0" IsAutorun="False" />
+        <Item Type="basic" Name="HMI" FileName="HMI.BAS" Storage="internalStorage" Autorun="0" IsAutorun="False" />
+        <Item Type="basic" Name="JAWS_TEST" FileName="JAWS_TEST.BAS" Storage="internalStorage" Autorun="0" IsAutorun="False" />
+        <Item Type="basic" Name="MAIN" FileName="MAIN.BAS" Storage="internalStorage" Autorun="0" IsAutorun="False" />
         <Item Type="mcConfig" Name="MC_CONFIG" FileName="MC_CONFIG.MCC" Storage="internalStorage" />
         <Item Type="basic" Name="REWIND_V100" FileName="REWIND_V100.BAS" Storage="internalStorage" Autorun="0" IsAutorun="False" />
         <Item Type="basic" Name="STARTUP_V100" FileName="STARTUP_V100.BAS" Storage="internalStorage" Autorun="0" IsAutorun="False" />

@@ -37,9 +37,6 @@
   <Content Name="Document_Program_REWIND_V100">
     <Document />
   </Content>
-  <Content Name="Document_Program_INCLUDE_IO">
-    <Document />
-  </Content>
   <Content Name="Document_MC_CONFIG_MC_CONFIG">
     <Document Title="(All)" />
   </Content>
@@ -74,6 +71,18 @@
       </UIState>
     </Tool>
   </Content>
+  <Content Name="Document_Program_MAIN">
+    <Document />
+  </Content>
+  <Content Name="tool_VRViewerControl">
+    <Tool DisplayAs="0" />
+  </Content>
+  <Content Name="Document_Program_JAWS_TEST">
+    <Document />
+  </Content>
+  <Content Name="Document_Program_INCLUDE_IO">
+    <Document />
+  </Content>
   <Content Name="pos_tool_ControllerTreeControl">
     <PositionSettings IsDocked="true" AnchorStyle="Left" SizeToContent="Manual" ResizeMode="CanResize" Left="0" Top="0" Width="0" Height="0" DockWidth="300" DockHeight="300" />
   </Content>
@@ -85,5 +94,14 @@
   </Content>
   <Content Name="pos_tool_CompileCheckControl">
     <PositionSettings IsDocked="true" AnchorStyle="Bottom" SizeToContent="Manual" ResizeMode="CanResize" Left="NaN" Top="NaN" Width="300" Height="300" DockWidth="300" DockHeight="300" />
+  </Content>
+  <Content Name="pos_tool_FindReplaceWindow">
+    <PositionSettings IsDocked="false" AnchorStyle="Right" SizeToContent="WidthAndHeight" ResizeMode="CanResize" Left="1665" Top="331" Width="245" Height="320" DockWidth="300" DockHeight="300" />
+  </Content>
+  <Content Name="Document_Program_HMI">
+    <Document />
+  </Content>
+  <Content Name="pos_tool_FindInProjectControl">
+    <PositionSettings IsDocked="false" AnchorStyle="Right" SizeToContent="Width" ResizeMode="CanResize" Left="2731" Top="219" Width="690" Height="620" DockWidth="300" DockHeight="300" />
   </Content>
 </Contents>
