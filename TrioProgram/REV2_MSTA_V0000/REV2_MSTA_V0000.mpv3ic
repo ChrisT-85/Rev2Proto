@@ -16,7 +16,7 @@
   <Content Name="Document_Program_REWIND_V100" />
   <Content Name="tool_FindReplaceWindow">
     <Tool MainMode="FindInProject">
-      <Options MatchWholeWord="false" MatchCase="false" SearchUp="false" UseRegularExpressions="false">
+      <Options MatchWholeWord="true" MatchCase="false" SearchUp="false" UseRegularExpressions="false">
         <TargetItemTypes Mode="All" />
       </Options>
     </Tool>
@@ -290,7 +290,6 @@
       </Categories>
     </CoEInfo>
   </Content>
-  <Content Name="Document_Program_MAIN" />
   <Content Name="tool_AxisParametersControl">
     <Tool IsPeriodicUpdateEnabled="true" DisplayAs="0">
       <AxesInUse>
@@ -314,5 +313,7 @@
     </RecentRanges_VR>
   </Content>
   <Content Name="Document_Program_JAWS_TEST" />
-  <Content Name="Document_Program_HMI" />
+  <Content Name="Document_Program_MAIN_V100" />
+  <Content Name="Document_Program_HMI_V100" />
+  <Content Name="Document_Program_MAX_TORQUES_V100" />
 </Contents>

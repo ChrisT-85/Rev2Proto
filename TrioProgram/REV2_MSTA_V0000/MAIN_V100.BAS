@@ -38,10 +38,10 @@ VR(oc_open_pos)=0
 'WAIT UNTIL machine_mode>=0
 
 'seal_torque_rms=0
-'transfer_not_ready=0
+'VR(commands_trans).trans_not_ready=0
 'infeed_pack_count=0
 'alarm=0
-'al_max_torque=0
+'alarm_max_torque=0
 'film_commands.0=0
 'hmi_commands=0
 'ppm=0
@@ -410,7 +410,7 @@ REPEAT
     IF IN(i_safety_general)=0 THEN GOTO restart_datum 'If safety off goto restart
     IF -1200>DRIVE_TORQUE AXIS(5) OR DRIVE_TORQUE AXIS(5)>1200 THEN
         PRINT #0, "Overtorque on Home Ret AX 5: ";DRIVE_TORQUE AXIS(5)
-        VR(al_max_torque).ax_jaws=1
+        VR(alarm_max_torque).ax_jaws=1
         GOTO restart_datum
     ENDIF
 UNTIL NOT IDLE
@@ -419,7 +419,7 @@ REPEAT
     IF IN(i_safety_general)=0 THEN GOTO restart_datum 'If safety off goto restart
     IF -1200>DRIVE_TORQUE AXIS(5) OR DRIVE_TORQUE AXIS(5)>1200 THEN
         PRINT #0, "Overtorque on Home Ret AX 5: ";DRIVE_TORQUE AXIS(5)
-        VR(al_max_torque).ax_jaws=1
+        VR(alarm_max_torque).ax_jaws=1
         GOTO restart_datum
     ENDIF
 UNTIL IDLE
@@ -451,7 +451,7 @@ REPEAT
     IF IN(i_safety_general)=0 THEN GOTO restart_datum 'If safety off goto restart
     IF -1200>DRIVE_TORQUE AXIS(2) OR DRIVE_TORQUE AXIS(2)>1200 THEN
         PRINT #0, "Overtorque on Home Ret AX 2: ";DRIVE_TORQUE AXIS(2)
-        VR(al_max_torque).ax_transfer=1
+        VR(alarm_max_torque).ax_transfer=1
         GOTO restart_datum
     ENDIF
 UNTIL IDLE
@@ -464,7 +464,7 @@ REPEAT
     IF IN(i_safety_general)=0 THEN GOTO restart_datum 'If safety off goto restart
     IF -1200>DRIVE_TORQUE AXIS(2) OR DRIVE_TORQUE AXIS(2)>1200 THEN
         PRINT #0, "Overtorque on Home Ret AX 2: ";DRIVE_TORQUE AXIS(2)
-        VR(al_max_torque).ax_transfer=1
+        VR(alarm_max_torque).ax_transfer=1
         GOTO restart_datum
     ENDIF
 UNTIL IDLE
@@ -493,7 +493,7 @@ REPEAT
     IF IN(i_safety_general)=0 THEN GOTO restart_datum 'If safety off goto restart
     IF -1200>DRIVE_TORQUE AXIS(6) OR DRIVE_TORQUE AXIS(6)> 1200 THEN
         PRINT #0, "Overtorque on home Ret AX 6: ";-DRIVE_TORQUE AXIS(6)
-        VR(al_max_torque).ax_seal=1
+        VR(alarm_max_torque).ax_seal=1
         GOTO restart_datum
     ENDIF
 UNTIL IDLE
@@ -505,7 +505,7 @@ REPEAT
     IF IN(i_safety_general)=0 THEN GOTO restart_datum 'If safety off goto restart
     IF -1200>DRIVE_TORQUE AXIS(6) OR DRIVE_TORQUE AXIS(6)> 1200 THEN
         PRINT #0, "Overtorque on home Ret AX 6: ";-DRIVE_TORQUE AXIS(6)
-        VR(al_max_torque).ax_seal=1
+        VR(alarm_max_torque).ax_seal=1
         GOTO restart_datum
     ENDIF
 UNTIL IDLE
@@ -516,7 +516,7 @@ REPEAT
     IF IN(i_safety_general)=0 THEN GOTO restart_datum 'If safety off goto restart
     IF -1200>DRIVE_TORQUE AXIS(6) OR DRIVE_TORQUE AXIS(6)> 1200 THEN
         PRINT #0, "Overtorque on home Ret AX 6: ";-DRIVE_TORQUE AXIS(6)
-        VR(al_max_torque).ax_seal=1
+        VR(alarm_max_torque).ax_seal=1
         GOTO restart_datum
     ENDIF
 UNTIL IDLE
@@ -740,7 +740,7 @@ REPEAT
     IF IN(i_safety_general)=0 THEN GOTO restart 'If safety off goto restart
     IF -1200>DRIVE_TORQUE OR DRIVE_TORQUE>1200 THEN
         PRINT #0, "Overtorque on Home Ret AX 5: ";DRIVE_TORQUE
-        al_max_torque.5=1
+        alarm_max_torque.5=1
         GOTO restart_datum
     ENDIF
 UNTIL IDLE
@@ -774,7 +774,7 @@ REPEAT
     IF IN(i_safety_general)=0 THEN GOTO restart 'If safety off goto restart
     IF -1200>DRIVE_TORQUE AXIS(2) OR DRIVE_TORQUE AXIS(2)>1200 THEN
         PRINT #0, "Overtorque on Home Ret AX 2: ";DRIVE_TORQUE AXIS(2)
-        al_max_torque.2=1
+        alarm_max_torque.2=1
         GOTO restart_datum
     ENDIF
 UNTIL IDLE
@@ -803,7 +803,7 @@ REPEAT
     IF IN(i_safety_general)=0 THEN GOTO restart 'If safety off goto restart
     IF -1200>DRIVE_TORQUE AXIS(6) OR DRIVE_TORQUE AXIS(6)> 1200 THEN
         PRINT #0, "Overtorque on home Ret AX 6: ";-DRIVE_TORQUE AXIS(6)
-        al_max_torque.6=1
+        alarm_max_torque.6=1
         GOTO restart_datum
     ENDIF
 UNTIL IDLE

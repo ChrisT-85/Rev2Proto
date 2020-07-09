@@ -128,7 +128,7 @@ CONSTANT "al_next_mc",11 '         bit11 - Next Machine Ok
 CONSTANT "al_any_alarm",15 '       bit15- any alarm hmi
 '----------------------------------------------------------------
 
-CONSTANT "al_max_torque",1 ' Bit 0 -> Alarm AX0 ... Bit 15 -> Alarm AX15
+CONSTANT "alarm_max_torque",1 ' Bit 0 -> Alarm AX0 ... Bit 15 -> Alarm AX15
 
 CONSTANT "commands_hmi",2
 '---------------------------------- bit constants for commands_hmi
@@ -147,7 +147,8 @@ CONSTANT "hmi_printer_al_nc",10 '   bit10 - printer_alarm NC
 
 CONSTANT "commands_mc",3
 '---------------------------------- bit constants for commands_mc
-CONSTANT "batch_end_flag",0 '       bit0 - batch end flag
+CONSTANT "mc_batch_end_flag",0 '       bit0 - batch end flag
+CONSTANT "mc_running",1 '       bit1 - mc_running
 '----------------------------------------------------------------
 
 'Machine
@@ -271,7 +272,10 @@ CONSTANT "diameter",80
 '==========================================
 CONSTANT "commands_trans",90
 '---------------------------------- bit constants for commands_mc
-
+CONSTANT "trans_not_ready",0 '           bit0 - start film
+CONSTANT "trans_pos_set_flag",1 '          bit1 - reg film on
+CONSTANT "film_print_speed_save",2 'bit2 - Printer Speed Save
+CONSTANT "film_on_transfer",3 '     bit3 - film on Transfer
 '----------------------------------------------------------------
 
 'ax_transfer 2----------------------------------
@@ -295,7 +299,6 @@ CONSTANT "trf_sshape",101
 'CONSTANT "trf_position_set_flag",106
 'CONSTANT "stp_mid_increment",107
 'CONSTANT "gbl_trf_start",108
-'CONSTANT "transfer_not_ready",109
 CONSTANT "brake_res_temp",110
 
 

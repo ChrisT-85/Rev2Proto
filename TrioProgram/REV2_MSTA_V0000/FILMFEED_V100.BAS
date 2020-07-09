@@ -31,10 +31,11 @@ DECEL=VR(film_dec)*1000
 DEFPOS(0)
 IF VR(commands_film).film_on_transfer=0 THEN
     WAIT UNTIL (VR(commands_seal).seal_start=0 AND VR(commands_seal).seal_bypass=0 AND VR(alarm).al_filmsnap=0) _
-        OR VR(commands_film).film_start AND VR(commands_mc).batch_end_flag=0
+        OR VR(commands_film).film_start AND VR(commands_mc).mc_batch_end_flag=0
 ELSE
-    WAIT UNTIL (infeed_pack_count>=n_impressions AND VR(commands_seal).seal_start=0 AND VR(alarm).al_filmsnap=0) _
-        OR VR(commands_film).film_start AND VR(commands_mc).batch_end_flag=0
+    WAIT UNTIL VR(infeed_pack_count)>=VR(n_impressions)_
+        AND VR(commands_seal).seal_start=0 AND VR(alarm).al_filmsnap=0_
+        OR VR(commands_film).film_start AND VR(commands_mc).mc_batch_end_flag=0
 ENDIF
 
 MOVE(VR(film_length)*10)
