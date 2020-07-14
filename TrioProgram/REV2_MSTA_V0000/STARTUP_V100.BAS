@@ -107,6 +107,13 @@ CONSTANT "axis_FS_limit_active",9 '      bit9 - FS limit active
 CONSTANT "axis_RS_limit_active",10 '     bit10 - RS limit active
 '==========================================
 
+' Processes
+'==========================================
+CONSTANT "filmfeed", 9
+CONSTANT "infeed_regist", 20
+
+
+
 'alarms
 '==========================================
 
@@ -194,14 +201,14 @@ CONSTANT "mpos_virtual_inf",25
 CONSTANT "mspeed_virtual_inf",26
 CONSTANT "mtype_virtual_inf",27
 
-'CONSTANT "stp_increment",28
-'CONSTANT "stp_final_increment",29
-'CONSTANT "min_pack_size",30
-'CONSTANT "max_pack_size",31
-'CONSTANT "infeed_speed",32
-'CONSTANT "infeed_acc",33
-'CONSTANT "infeed_dec",34
-'CONSTANT "infeed_pack_count",35
+CONSTANT "stp_increment",28
+CONSTANT "stp_final_increment",29
+CONSTANT "min_pack_size",30
+CONSTANT "max_pack_size",31
+CONSTANT "infeed_speed",32
+CONSTANT "infeed_acc",33
+CONSTANT "infeed_dec",34
+CONSTANT "infeed_pack_count",35
 'CONSTANT "slipt_wait_pos",36
 
 
@@ -274,8 +281,9 @@ CONSTANT "commands_trans",90
 '---------------------------------- bit constants for commands_mc
 CONSTANT "trans_not_ready",0 '           bit0 - start film
 CONSTANT "trans_pos_set_flag",1 '          bit1 - reg film on
-CONSTANT "film_print_speed_save",2 'bit2 - Printer Speed Save
-CONSTANT "film_on_transfer",3 '     bit3 - film on Transfer
+CONSTANT "film_print_speed_save",2 '    bit2 - Printer Speed Save
+CONSTANT "film_on_transfer",3 '         bit3 - film on Transfer
+CONSTANT "trans_final_inc_on",4 '       bit4 - Final Increment On
 '----------------------------------------------------------------
 
 'ax_transfer 2----------------------------------
@@ -327,6 +335,7 @@ CONSTANT "commands_seal",130
 '---------------------------------- bit constants for commands_seal
 CONSTANT "seal_bypass",0 '          bit0 - seal_bypass
 CONSTANT "seal_start",1 '           bit1 - start seal
+CONSTANT "seal_pause",2 '           bit2 - seal pause
 '----------------------------------------------------------------
 'ax_seal 6---------------------------------
 CONSTANT "axisstatus_seal",131
@@ -426,7 +435,7 @@ CONSTANT "seal_count1",164
 'CONSTANT "AuditTrail_Run",513
 'CONSTANT "AlarmHist_Run",514
 
-RUN "MAIN",1
+RUN "MAIN_V100",1
 
 'processes
 '

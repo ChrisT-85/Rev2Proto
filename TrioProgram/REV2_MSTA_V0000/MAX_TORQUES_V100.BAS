@@ -1,3 +1,11 @@
+'==============================================================================
+' Filename: MAX_TORQUES_V***.BAS
+' Revisions:
+' V100 - Initial release. (Systems Team)
+'------------------------------------------------------------------------------
+' Abstract:
+' This program is for monitoring the torque values of the servo axis
+'==============================================================================
 
 local_done=0
 VR(alarm_max_torque)=0 ' VR00, Bit 0 -> Alarm AX0 ... Bit 15 -> Alarm AX15

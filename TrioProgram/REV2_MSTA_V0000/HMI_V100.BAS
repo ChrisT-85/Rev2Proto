@@ -1,3 +1,14 @@
+'==============================================================================
+' Filename: HMI_V***.BAS
+' Revisions:
+' V100 - Initial release. (Systems Team)
+'------------------------------------------------------------------------------
+' Abstract:
+' This program is for reading the servo axis to HMI,
+' brake resistor AND cubicle temps
+' next mc, prev mc and printer alarms
+'==============================================================================
+
 VR(al_rem_err_infeed)=0
 VR(al_rem_err_stepper)=0
 VR(al_rem_err_transfer)=0

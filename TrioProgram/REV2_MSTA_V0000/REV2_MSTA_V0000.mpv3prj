@@ -11,6 +11,8 @@
         <Item Type="textFile" Name="EC_EXTEND" FileName="EC_EXTEND.TXT" Storage="internalStorage" />
         <Item Type="basic" Name="FILMFEED_V100" FileName="FILMFEED_V100.BAS" Storage="internalStorage" Autorun="0" IsAutorun="False" />
         <Item Type="basic" Name="HMI_V100" FileName="HMI_V100.BAS" Storage="internalStorage" Autorun="0" IsAutorun="False" />
+        <Item Type="basic" Name="INFEED_MAIN_V100" FileName="INFEED_MAIN_V100.BAS" Storage="internalStorage" Autorun="0" IsAutorun="False" />
+        <Item Type="basic" Name="INFEED_REGIST_V100" FileName="INFEED_REGIST_V100.BAS" Storage="internalStorage" Autorun="0" IsAutorun="False" />
         <Item Type="basic" Name="JAWS_TEST" FileName="JAWS_TEST.BAS" Storage="internalStorage" Autorun="0" IsAutorun="False" />
         <Item Type="basic" Name="MAIN_V100" FileName="MAIN_V100.BAS" Storage="internalStorage" Autorun="0" IsAutorun="False" />
         <Item Type="basic" Name="MAX_TORQUES_V100" FileName="MAX_TORQUES_V100.BAS" Storage="internalStorage" Autorun="0" IsAutorun="False" />

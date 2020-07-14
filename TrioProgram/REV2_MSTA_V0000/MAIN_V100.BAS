@@ -7,15 +7,12 @@
 ' This program is for homing and program start/stop
 '==============================================================================
 
-
-
 OP(8,31,OFF) 'RESET Outputs
 DISABLE_GROUP(-1)' Clear all groups
 DATUM(0)
 DISABLE_GROUP(0,1) ' Infeed , Stepper
 DISABLE_GROUP(3,4,8) ' Film feed, Rewind, film feed brake
 DISABLE_GROUP(2,5,6,7) ' Transfer, Jaws, Seal, Outfeed
-DISABLE_GROUP(8) 'Fill Conveyor
 DISABLE_GROUP(9,10)'skinpac
 
 VR(infeed_acc)=3000000
@@ -29,13 +26,6 @@ VR(oc_open_pos)=0
 'RUN"CLOCK",13
 'RUN"FILL_CONV",10
 'RUN"AUTO_TENSION",15
-
-'IF machine_mode>=2 THEN 'skinpac or vac test mode
-'    machine_mode=0 'atmospheric
-'    WA(50)
-'ENDIF
-'
-'WAIT UNTIL machine_mode>=0
 
 'seal_torque_rms=0
 'VR(commands_trans).trans_not_ready=0
@@ -52,7 +42,7 @@ VR(oc_open_pos)=0
 'OP(io_vitual_machine_run,OFF) ' Virtual IO Machine running off
 'OP(o_magnets_ssr,OFF) 'Magnets SSR OFF
 
-'Infeed  128.2/mm
+'Infeed  109.5/mm
 BASE(ax_infeed)
 UNITS=100
 DATUM_IN=-1
@@ -81,7 +71,7 @@ WAIT UNTIL OFFPOS=0
 'SRAMP=150
 ADDAX(15)
 
-'Stepper  128.2/mm
+'Stepper  109.5/mm
 BASE(ax_stepper)
 UNITS=100
 DATUM_IN=-1
@@ -374,6 +364,7 @@ AXIS_ENABLE AXIS(4)=ON
 AXIS_ENABLE AXIS(5)=ON
 AXIS_ENABLE AXIS(6)=ON
 AXIS_ENABLE AXIS(7)=ON
+AXIS_ENABLE AXIS(8)=OFF
 WA(1000)
 
 SERVO AXIS(0)=ON
@@ -384,6 +375,7 @@ SERVO AXIS(4)=ON
 SERVO AXIS(5)=ON
 SERVO AXIS(6)=ON
 SERVO AXIS(7)=ON
+SERVO AXIS(8)=OFF
 
 WA(100)
 
