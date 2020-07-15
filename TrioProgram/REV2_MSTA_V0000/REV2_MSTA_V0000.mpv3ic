@@ -11,7 +11,11 @@
     </Tool>
   </Content>
   <Content Name="tool_VRViewerControl">
-    <Tool IsPeriodicUpdateEnabled="true" />
+    <Tool IsPeriodicUpdateEnabled="true" ShowDescriptions="false">
+      <Ranges>
+        <Range StartAddress="0" EndAddress="200" IsExpanded="true" Description="" />
+      </Ranges>
+    </Tool>
   </Content>
   <Content Name="Document_Program_MAIN_V100" />
   <Content Name="Document_Program_HMI_V100" />
@@ -21,4 +25,18 @@
   <Content Name="Document_Program_INFEED_REGIST_V100" />
   <Content Name="Document_Program_INFEED_MAIN_V100" />
   <Content Name="Document_Program_MAX_TORQUES_V100" />
+  <Content Name="Document_Program_TRANSFER_V100" />
+  <Content Name="tool_FindReplaceWindow">
+    <Tool MainMode="FindInProject">
+      <Options MatchWholeWord="false" MatchCase="false" SearchUp="false" UseRegularExpressions="false">
+        <TargetItemTypes Mode="All" />
+      </Options>
+    </Tool>
+  </Content>
+  <Content Name="Document_Program_SEAL_V100" />
+  <Content Name="TableRangeEditDlgSettings">
+    <RecentRanges_VR>
+      <Range StartAddress="0" EndAddress="200" Description="" />
+    </RecentRanges_VR>
+  </Content>
 </Contents>

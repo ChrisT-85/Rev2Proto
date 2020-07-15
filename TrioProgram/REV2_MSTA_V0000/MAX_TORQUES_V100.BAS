@@ -47,9 +47,9 @@ IF IN(i_safety_general) THEN
     ENDIF
 
     ' JAWS
-    IF -4000>DRIVE_TORQUE AXIS(ax_jaws) OR DRIVE_TORQUE AXIS(ax_jaws)>4000 THEN
-        PRINT #0, "Overtorque Jaws: ";DRIVE_TORQUE AXIS(ax_jaws)
-        VR(alarm_max_torque).ax_jaws=1
+    IF -4000>DRIVE_TORQUE AXIS(ax_oc) OR DRIVE_TORQUE AXIS(ax_oc)>4000 THEN
+        PRINT #0, "Overtorque Jaws: ";DRIVE_TORQUE AXIS(ax_oc)
+        VR(alarm_max_torque).ax_oc=1
         GOTO alarm_out
     ENDIF
 
@@ -67,7 +67,7 @@ IF IN(i_safety_general) THEN
     ENDIF
 
     ' OUTFEED
-    IF -DRIVE_TORQUE AXIS(ax_outfeed)>3500 THEN
+    IF DRIVE_TORQUE AXIS(ax_outfeed)>3500 THEN
         PRINT #0, "Overtorque Outfeed: ";-DRIVE_TORQUE AXIS(ax_outfeed)
         VR(alarm_max_torque).ax_outfeed=1
         GOTO alarm_out
@@ -115,6 +115,11 @@ IF IN(i_safety_infeed)=1 AND local_done=1 THEN
     local_done=0
     VR(infeed_pack_count)=0
 ENDIF
+
+'PRINT #0, "Torque Infeed: ";DRIVE_TORQUE AXIS(ax_infeed)
+'PRINT #0, "Torque Stepper: ";DRIVE_TORQUE AXIS(ax_stepper)
+'PRINT #0, "Torque Outfeed: ";DRIVE_TORQUE AXIS(ax_outfeed)
+
 
 GOTO loop:
 

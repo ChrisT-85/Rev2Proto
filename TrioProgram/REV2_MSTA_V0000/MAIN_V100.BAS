@@ -182,7 +182,7 @@ DEFPOS(0)
 WAIT UNTIL OFFPOS=0
 
 'Jaws  43.33333/mm
-BASE(ax_jaws)
+BASE(ax_oc)
 UNITS=150
 DATUM_IN=4
 FHOLD_IN=-1
@@ -386,7 +386,7 @@ DECEL=VR(film_dec)*1000
 SRAMP=200
 FE_LIMIT=20000
 
-BASE(ax_jaws) ' Jaws
+BASE(ax_oc) ' Jaws
 RS_LIMIT=-7000
 FS_LIMIT=7000
 FE_LIMIT=6000
@@ -402,7 +402,7 @@ REPEAT
     IF IN(i_safety_general)=0 THEN GOTO restart_datum 'If safety off goto restart
     IF -1200>DRIVE_TORQUE AXIS(5) OR DRIVE_TORQUE AXIS(5)>1200 THEN
         PRINT #0, "Overtorque on Home Ret AX 5: ";DRIVE_TORQUE AXIS(5)
-        VR(alarm_max_torque).ax_jaws=1
+        VR(alarm_max_torque).ax_oc=1
         GOTO restart_datum
     ENDIF
 UNTIL NOT IDLE
@@ -411,7 +411,7 @@ REPEAT
     IF IN(i_safety_general)=0 THEN GOTO restart_datum 'If safety off goto restart
     IF -1200>DRIVE_TORQUE AXIS(5) OR DRIVE_TORQUE AXIS(5)>1200 THEN
         PRINT #0, "Overtorque on Home Ret AX 5: ";DRIVE_TORQUE AXIS(5)
-        VR(alarm_max_torque).ax_jaws=1
+        VR(alarm_max_torque).ax_oc=1
         GOTO restart_datum
     ENDIF
 UNTIL IDLE
@@ -526,7 +526,7 @@ SRAMP=100
 MOVEABS(0)
 WAIT IDLE
 
-''RUN "MAX_TORQUES",4
+RUN "MAX_TORQUES_V100",4
 '
 restart:
 'PRINT #0, "Restart Jump point"

@@ -14,7 +14,7 @@ VR(al_rem_err_stepper)=0
 VR(al_rem_err_transfer)=0
 VR(al_rem_err_rewind)=0
 VR(al_rem_err_filmfeed)=0
-VR(al_rem_err_jaws)=0
+VR(al_rem_err_oc)=0
 VR(al_rem_err_seal)=0
 VR(al_rem_err_outfeed)=0
 
@@ -50,9 +50,9 @@ IF VR(axisstatus_filmfeed).axis_rem_drive_err THEN
     WA(100)
 ENDIF
 
-VR(axisstatus_jaws)=AXISSTATUS AXIS(ax_jaws)
-IF VR(axisstatus_jaws).axis_rem_drive_err THEN
-    IF NOT CO_READ_AXIS(ax_jaws,$2101,1,5,al_rem_err_jaws) THEN PRINT #0, "Error reading AX 5 alarm"
+VR(axisstatus_oc)=AXISSTATUS AXIS(ax_oc)
+IF VR(axisstatus_oc).axis_rem_drive_err THEN
+    IF NOT CO_READ_AXIS(ax_oc,$2101,1,5,al_rem_err_oc) THEN PRINT #0, "Error reading AX 5 alarm"
     WA(100)
 ENDIF
 
@@ -112,11 +112,11 @@ VR(drive_torque_filmfeed)=DRIVE_TORQUE AXIS(ax_filmfeed)
 VR(mtype_filmfeed)=MTYPE AXIS(ax_filmfeed)
 WA(100)
 
-'jaws
-VR(mpos_jaws)=MPOS AXIS(ax_jaws)
-VR(mspeed_jaws)=MSPEED AXIS(ax_jaws)
-VR(drive_torque_jaws)=DRIVE_TORQUE AXIS(ax_jaws)
-VR(mtype_jaws)=MTYPE AXIS(ax_jaws)
+'openclose
+VR(mpos_oc)=MPOS AXIS(ax_oc)
+VR(mspeed_oc)=MSPEED AXIS(ax_oc)
+VR(drive_torque_oc)=DRIVE_TORQUE AXIS(ax_oc)
+VR(mtype_oc)=MTYPE AXIS(ax_oc)
 WA(100)
 
 'seal
@@ -152,7 +152,7 @@ VR(axis_enable_ax).1= AXIS_ENABLE AXIS(ax_stepper)
 VR(axis_enable_ax).2= AXIS_ENABLE AXIS(ax_transfer)
 VR(axis_enable_ax).3= AXIS_ENABLE AXIS(ax_rewind)
 VR(axis_enable_ax).4= AXIS_ENABLE AXIS(ax_filmfeed)
-VR(axis_enable_ax).5= AXIS_ENABLE AXIS(ax_jaws)
+VR(axis_enable_ax).5= AXIS_ENABLE AXIS(ax_oc)
 VR(axis_enable_ax).6= AXIS_ENABLE AXIS(ax_seal)
 VR(axis_enable_ax).7= AXIS_ENABLE AXIS(ax_outfeed)
 VR(axis_enable_ax).8= AXIS_ENABLE AXIS(ax_filmfeedbrake)
@@ -165,7 +165,7 @@ VR(servo_ax).1=SERVO AXIS(ax_stepper)
 VR(servo_ax).2=SERVO AXIS(ax_transfer)
 VR(servo_ax).3=SERVO AXIS(ax_rewind)
 VR(servo_ax).4=SERVO AXIS(ax_filmfeed)
-VR(servo_ax).5=SERVO AXIS(ax_jaws)
+VR(servo_ax).5=SERVO AXIS(ax_oc)
 VR(servo_ax).6=SERVO AXIS(ax_seal)
 VR(servo_ax).7=SERVO AXIS(ax_outfeed)
 VR(servo_ax).8=SERVO AXIS(ax_filmfeedbrake)

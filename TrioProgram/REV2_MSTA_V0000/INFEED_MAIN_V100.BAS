@@ -178,7 +178,7 @@ MOVE (VR(stp_final_increment)*10)
 WAIT UNTIL IDLE OR IN(i_stop_pb)=0 OR IN(i_safety_general)=0
 IF VR(commands_trans).trans_final_inc_on=1 THEN
     VR(infeed_pack_count)=VR(n_impressions)
-    WAIT UNTIL (MPOS AXIS(ax_jaws) > (VR(oc_close_pos)-1000)) OR IN(i_safety_general)=0
+    WAIT UNTIL (MPOS AXIS(ax_oc) > (VR(oc_close_pos)-1000)) OR IN(i_safety_general)=0
 ENDIF
 WAIT UNTIL VR(infeed_pack_count)=0 OR IN(i_stop_pb)=0 OR IN(i_safety_general)=0
 WAIT UNTIL (MPOS AXIS(ax_transfer)<1000 AND MPOS AXIS(ax_seal)<4000)

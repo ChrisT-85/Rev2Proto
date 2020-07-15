@@ -1,8 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Contents>
-  <Content Name="pos_tool_ControllerTreeControl">
-    <PositionSettings IsDocked="true" AnchorStyle="Left" SizeToContent="Manual" ResizeMode="CanResize" Left="0" Top="0" Width="0" Height="0" DockWidth="300" DockHeight="300" />
-  </Content>
   <Content Name="tool_ControllerTreeControl">
     <Tool>
       <UIState>
@@ -19,23 +16,8 @@
       </UIState>
     </Tool>
   </Content>
-  <Content Name="pos_tool_AxisParametersControl">
-    <PositionSettings IsDocked="false" AnchorStyle="Right" SizeToContent="Width" ResizeMode="CanResize" Left="NaN" Top="NaN" Width="300" Height="300" DockWidth="300" DockHeight="300" />
-  </Content>
-  <Content Name="pos_tool_TerminalControl_0">
-    <PositionSettings IsDocked="true" AnchorStyle="Right" SizeToContent="Manual" ResizeMode="CanResize" Left="NaN" Top="NaN" Width="300" Height="300" DockWidth="300" DockHeight="300" />
-  </Content>
-  <Content Name="pos_tool_VRViewerControl">
-    <PositionSettings IsDocked="false" AnchorStyle="Right" SizeToContent="Manual" ResizeMode="CanResize" Left="NaN" Top="NaN" Width="200" Height="600" DockWidth="300" DockHeight="300" />
-  </Content>
   <Content Name="tool_VRViewerControl">
     <Tool DisplayAs="0" />
-  </Content>
-  <Content Name="pos_tool_OutputWindow">
-    <PositionSettings IsDocked="true" AnchorStyle="Bottom" SizeToContent="Manual" ResizeMode="CanResize" Left="NaN" Top="NaN" Width="300" Height="300" DockWidth="300" DockHeight="300" />
-  </Content>
-  <Content Name="pos_tool_CompileCheckControl">
-    <PositionSettings IsDocked="true" AnchorStyle="Bottom" SizeToContent="Manual" ResizeMode="CanResize" Left="NaN" Top="NaN" Width="300" Height="300" DockWidth="300" DockHeight="300" />
   </Content>
   <Content Name="ToolBarSettings_basic">
     <Content>
@@ -66,5 +48,26 @@
   </Content>
   <Content Name="Document_Program_MAX_TORQUES_V100">
     <Document />
+  </Content>
+  <Content Name="Document_Program_TRANSFER_V100">
+    <Document />
+  </Content>
+  <Content Name="Document_Program_SEAL_V100">
+    <Document />
+  </Content>
+  <Content Name="pos_tool_ControllerTreeControl">
+    <PositionSettings IsDocked="true" AnchorStyle="Left" SizeToContent="Manual" ResizeMode="CanResize" Left="0" Top="0" Width="0" Height="0" DockWidth="300" DockHeight="300" />
+  </Content>
+  <Content Name="pos_tool_AxisParametersControl">
+    <PositionSettings IsDocked="false" AnchorStyle="Right" SizeToContent="Width" ResizeMode="CanResize" Left="NaN" Top="NaN" Width="300" Height="300" DockWidth="300" DockHeight="300" />
+  </Content>
+  <Content Name="pos_tool_VRViewerControl">
+    <PositionSettings IsDocked="false" AnchorStyle="Right" SizeToContent="Manual" ResizeMode="CanResize" Left="NaN" Top="NaN" Width="200" Height="600" DockWidth="300" DockHeight="300" />
+  </Content>
+  <Content Name="pos_tool_OutputWindow">
+    <PositionSettings IsDocked="true" AnchorStyle="Bottom" SizeToContent="Manual" ResizeMode="CanResize" Left="NaN" Top="NaN" Width="300" Height="300" DockWidth="300" DockHeight="300" />
+  </Content>
+  <Content Name="pos_tool_CompileCheckControl">
+    <PositionSettings IsDocked="true" AnchorStyle="Bottom" SizeToContent="Manual" ResizeMode="CanResize" Left="NaN" Top="NaN" Width="300" Height="300" DockWidth="300" DockHeight="300" />
   </Content>
 </Contents>

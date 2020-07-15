@@ -9,7 +9,7 @@ CONSTANT "i_infeed_sensor",0 '      IN 0
 CONSTANT "i_reg_film_sensor",1 '    IN 1
 CONSTANT "i_trf_in_limit",2 '       IN 2
 CONSTANT "i_seal_home_sensor",3 '   IN 3
-CONSTANT "i_jaws_home_sensor",4 '   IN 4
+CONSTANT "i_oc_home_sensor",4 '     IN 4
 CONSTANT "i_base_tool_lock_sens",5' IN 5
 CONSTANT "i_pack_crush_sensor",6 '  IN 6
 'CONSTANT "i_spare_7",7 '           IN 7
@@ -87,7 +87,7 @@ CONSTANT "ax_stepper",1
 CONSTANT "ax_transfer",2
 CONSTANT "ax_rewind",3
 CONSTANT "ax_filmfeed",4
-CONSTANT "ax_jaws",5
+CONSTANT "ax_oc",5
 CONSTANT "ax_seal",6
 CONSTANT "ax_outfeed",7
 CONSTANT "ax_filmFeedBrake",8
@@ -306,19 +306,19 @@ CONSTANT "trf_sshape",101
 'CONSTANT "transfer_start",105
 'CONSTANT "trf_position_set_flag",106
 'CONSTANT "stp_mid_increment",107
-'CONSTANT "gbl_trf_start",108
+CONSTANT "gbl_trf_start",108
 CONSTANT "brake_res_temp",110
 
 
-''jaws
+''oc
 '==========================================
-'ax_jaws 5---------------------------------
-CONSTANT "axisstatus_jaws",111
-CONSTANT "al_rem_err_jaws",112
-CONSTANT "mpos_jaws",113
-CONSTANT "mspeed_jaws",114
-CONSTANT "drive_torque_jaws",115
-CONSTANT "mtype_jaws",116
+'ax_oc 5---------------------------------
+CONSTANT "axisstatus_oc",111
+CONSTANT "al_rem_err_oc",112
+CONSTANT "mpos_oc",113
+CONSTANT "mspeed_oc",114
+CONSTANT "drive_torque_oc",115
+CONSTANT "mtype_oc",116
 
 CONSTANT "oc_close_pos",117 '35
 CONSTANT "oc_open_pos",118'36
@@ -327,6 +327,7 @@ CONSTANT "oc_speed",120'38
 CONSTANT "oc_acc",121'39
 CONSTANT "oc_dec",122'40
 CONSTANT "oc_sshape",123'41
+CONSTANT "oc_open_ant_pos",124 ' OC open anticipation
 
 
 ''seal
@@ -336,6 +337,7 @@ CONSTANT "commands_seal",130
 CONSTANT "seal_bypass",0 '          bit0 - seal_bypass
 CONSTANT "seal_start",1 '           bit1 - start seal
 CONSTANT "seal_pause",2 '           bit2 - seal pause
+CONSTANT "seal_cycle",3 '           bit2 - seal cycle
 '----------------------------------------------------------------
 'ax_seal 6---------------------------------
 CONSTANT "axisstatus_seal",131
