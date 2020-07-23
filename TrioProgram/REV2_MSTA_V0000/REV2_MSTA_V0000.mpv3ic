@@ -5,7 +5,16 @@
   </Content>
   <Content Name="tool_AxisParametersControl">
     <Tool IsPeriodicUpdateEnabled="true" DisplayAs="0">
+      <AxesInUse>
+        <Index>0</Index>
+        <Index>1</Index>
+        <Index>2</Index>
+        <Index>5</Index>
+        <Index>6</Index>
+        <Index>15</Index>
+      </AxesInUse>
       <Groups>
+        <Group Name="Velocity profile" IsExpanded="false" />
         <Group Name="Misc" IsExpanded="false" />
       </Groups>
     </Tool>
@@ -27,8 +36,8 @@
   <Content Name="Document_Program_MAX_TORQUES_V100" />
   <Content Name="Document_Program_TRANSFER_V100" />
   <Content Name="tool_FindReplaceWindow">
-    <Tool MainMode="FindInProject">
-      <Options MatchWholeWord="false" MatchCase="false" SearchUp="false" UseRegularExpressions="false">
+    <Tool MainMode="QuickFind">
+      <Options MatchWholeWord="true" MatchCase="true" SearchUp="false" UseRegularExpressions="false">
         <TargetItemTypes Mode="All" />
       </Options>
     </Tool>
@@ -38,5 +47,25 @@
     <RecentRanges_VR>
       <Range StartAddress="0" EndAddress="200" Description="" />
     </RecentRanges_VR>
+  </Content>
+  <Content Name="Document_Program_JAWS_TEST" />
+  <Content Name="Document_MC_CONFIG_MC_CONFIG" />
+  <Content Name="tool_DigitalIOControl">
+    <Tool IsPeriodicUpdateEnabled="true" />
+  </Content>
+  <Content Name="tool_IntelligentDrivesControl">
+    <Tool IsPeriodicUpdateEnabled="true" />
+  </Content>
+  <Content Name="tool_EtherCATDeviceControl_4278190081">
+    <Tool IsPeriodicUpdateEnabled="true" SelectedCategoryName="">
+      <Extension />
+    </Tool>
+  </Content>
+  <Content Name="tool_WatchVariablesControl">
+    <Tool IsPeriodicUpdateEnabled="true">
+      <Variables>
+        <Variable DisplayName="local_pack_size" ParamName="local_pack_size" Context="INFEED_MAIN_V100,5" />
+      </Variables>
+    </Tool>
   </Content>
 </Contents>

@@ -10,37 +10,56 @@
 OP(8,31,OFF) 'RESET Outputs
 DISABLE_GROUP(-1)' Clear all groups
 DATUM(0)
-DISABLE_GROUP(0,1) ' Infeed , Stepper
-DISABLE_GROUP(3,4,8) ' Film feed, Rewind, film feed brake
-DISABLE_GROUP(2,5,6,7) ' Transfer, Jaws, Seal, Outfeed
-DISABLE_GROUP(9,10)'skinpac
+DISABLE_GROUP(ax_filmfeed,ax_rewind,ax_filmfeedbrake)
+DISABLE_GROUP(ax_transfer,ax_oc,ax_seal,ax_outfeed)
 
 VR(infeed_acc)=3000000
 VR(infeed_dec)=3000000
 VR(oc_open_pos)=0
 
-'RUN"HMI",2
+RUN"HMI_V100",proc_hmi
 'RUN"ANALOGUE",3
-'RUN"GENERATE_DATA",3
-'RUN"STEPPER_GUIDES",12
-'RUN"CLOCK",13
-'RUN"FILL_CONV",10
-'RUN"AUTO_TENSION",15
+'RUN"GENERATE_DATA",proc_gen_data
 
-'seal_torque_rms=0
-'VR(commands_trans).trans_not_ready=0
-'infeed_pack_count=0
-'alarm=0
-'alarm_max_torque=0
-'film_commands.0=0
-'hmi_commands=0
-'ppm=0
+
+VR(seal_torque_rms)=0
+VR(commands_trans).trans_not_ready=0
+VR(infeed_pack_count)=0
+VR(alarm)=0
+VR(alarm_max_torque)=0
+VR(commands_film).film_start=0
+VR(hmi_commands)=0
+VR(ppm)=0
 'data_machine_status=-1
-'seal_pause=0
-'seal_pause_aux=0
-'crush_count=0
-'OP(io_vitual_machine_run,OFF) ' Virtual IO Machine running off
-'OP(o_magnets_ssr,OFF) 'Magnets SSR OFF
+VR(seal_pause)=0
+VR(seal_crush_count)=0
+VR(commands_mc).mc_running=0
+OP(o_magnets_ssr,OFF) 'Magnets SSR OFF
+
+'Virtual infeed axis
+BASE(ax_virtual_infeed)
+UNITS=100
+ACCEL=60000
+ATYPE=0
+CREEP=1
+DATUM_IN=0
+DECEL=40000
+D_GAIN=0
+FE_LIMIT=200
+FHOLD_IN=-1
+FS_LIMIT=4000000000
+FWD_IN=-1
+I_GAIN=0
+JOGSPEED=1
+OV_GAIN=0
+P_GAIN=1
+REP_DIST=2000000000
+REV_IN=-1
+RS_LIMIT=-4000000000
+SERVO=0
+SPEED=35000
+SRAMP=249
+VFF_GAIN=0
 
 'Infeed  109.5/mm
 BASE(ax_infeed)
@@ -69,7 +88,7 @@ WAIT UNTIL OFFPOS=0
 'SRAMP=150
 'SPEED=30000
 'SRAMP=150
-ADDAX(15)
+ADDAX(ax_virtual_infeed)
 
 'Stepper  109.5/mm
 BASE(ax_stepper)
@@ -310,7 +329,6 @@ WAIT UNTIL OFFPOS=0
 BASE(ax_virtual_infeed)
 ATYPE=0
 UNITS=100
-
 FHOLD_IN=-1
 FWD_IN=-1
 REV_IN=-1
@@ -502,7 +520,7 @@ REPEAT
     ENDIF
 UNTIL IDLE
 
-MOVEABS (VR(-seal_home_offset)*10)
+MOVEABS(-VR(seal_home_offset)*10)
 
 REPEAT
     IF IN(i_safety_general)=0 THEN GOTO restart_datum 'If safety off goto restart
@@ -540,19 +558,19 @@ restart:
 'IF machine_mode=0 OR machine_mode=2 THEN ' atmos/map-f or skinpac mode
 '    'STOP "VAC_TEST"
 '    IF PROC_STATUS PROC(5)=0 THEN 'proc 5 = INFEED_MAIN
-'        RUN "INFEED_MAIN",5
+RUN "INFEED_MAIN_V100",5
 '        PRINT #0, "Run INFEED_MAIN"
 '    ENDIF
 '    IF PROC_STATUS PROC(20)=0 THEN 'proc 5 = INFEED_REGIST
-'        RUN "INFEED_REGIST",20
+RUN "INFEED_REGIST_V100",20
 '        PRINT #0, "Run INFEED_REGIST"
 '    ENDIF
-'    RUN"TRANSFER",6
+RUN"TRANSFER_V100",6
 '    PRINT #0, "Run Transfer"
 '    IF machine_mode=0 THEN
 '        'STOP "SEAL_SKINPAC"
 '        'WA(500)
-'        RUN"SEAL",7
+RUN"SEAL_V100",7
 '        PRINT #0, "Atmos/Map-F Mode"
 '    ELSE
 '        STOP "SEAL"
@@ -560,9 +578,9 @@ restart:
 '        'RUN "SEAL_SKINPAC",7
 '        PRINT #0, "SkinPAC Mode"
 '    ENDIF
-'    RUN"REWIND_TORQUE",8
+RUN"REWIND_V100",8
 '    PRINT #0, "Run Rewind"
-'    RUN"FILM_FEED",9
+RUN"FILMFEED_V100",9
 '    PRINT #0, "Run Film Feed"
 '
 '    BASE(16) ' PWM Brake
@@ -592,21 +610,20 @@ WAIT UNTIL IN(i_safety_infeed)=0 OR IN(i_safety_general)=0 ' Wait until safety O
 PRINT #0, "Safety Off "
 
 OP(o_mc_running,0) ' Machine running off
-
-IF machine_mode=1 THEN 'passive conveyor
-    CANCEL(2) AXIS(0)
-    CANCEL(2) AXIS(1)
-    CANCEL(2) AXIS(7)
-ENDIF
+'
+'IF machine_mode=1 THEN 'passive conveyor
+'    CANCEL(2) AXIS(0)
+'    CANCEL(2) AXIS(1)
+'    CANCEL(2) AXIS(7)
+'ENDIF
 
 CANCEL(2) AXIS(8)
 AXIS_ENABLE AXIS(8)=OFF
 
-'STOP"TRANSFER"
-'STOP"SEAL"
-''STOP"SEAL_SKINPAC"
-'STOP"REWIND_TORQUE"
-'STOP"FILM_FEED"
+STOP"TRANSFER_V100"
+STOP"SEAL_V100"
+STOP"REWIND_V100"
+STOP"FILMFEED_V100"
 
 PRINT #0, "Programs Off "
 
@@ -620,8 +637,8 @@ CANCEL(2) AXIS(16)
 PRINT #0, "Cancel all moves"
 WA(500)
 OP(o_magnets_ssr,OFF) 'o_magnets_ssr
-OP(o_gas_valve1,OFF) 'o_gas_valve1
-OP(o_gas_valve2,OFF) 'o_gas_valve2
+'OP(o_gas_valve1,OFF) 'o_gas_valve1
+'OP(o_gas_valve2,OFF) 'o_gas_valve2
 AXIS_ENABLE AXIS(2)=OFF
 AXIS_ENABLE AXIS(3)=OFF
 AXIS_ENABLE AXIS(4)=OFF
@@ -645,20 +662,19 @@ SERVO AXIS(4)=OFF
 SERVO AXIS(5)=OFF
 SERVO AXIS(6)=OFF
 SERVO AXIS(7)=OFF
-PRINT #0, "Servo OFF"
-OP(o_brake_ssr,OFF) ' Reel Brake off
-OP(o_brake_ssr,OFF) ' Reel Brake off
-OP(o_gas_isol1,OFF)
-OP(o_gas_isol2,OFF)
-OP(o_vac_pump_relay,OFF)
+'PRINT #0, "Servo OFF"
+''OP(o_brake_ssr,OFF) ' Reel Brake off
+'OP(o_brake_ssr,OFF) ' Reel Brake off
+'OP(o_gas_isol1,OFF)
+'OP(o_gas_isol2,OFF)
+'OP(o_vac_pump_relay,OFF)
 
 
 BASE(ax_transfer)
 SYNC(4,400)' Stop Syncronisation
 WAIT UNTIL SYNC_CONTROL =0
 'seal_pause=0
-'seal_pause_aux=0
-'crush_count=0
+'seal_crush_count=0
 REPEAT
     OP(o_flashing_reset,ON)
     TICKS=300
@@ -808,3 +824,6 @@ SRAMP=100
 PRINT #0, "Seal Par Set 1 , Ax6"
 WA(500)
 GOTO restart
+
+'this has been added right now
+

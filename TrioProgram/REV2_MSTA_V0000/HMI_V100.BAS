@@ -196,11 +196,11 @@ ELSE
 ENDIF
 WA(100)
 
-IF (IN(i_previous_mc_ok)=0 AND VR(commands_hmi).hmi_prev_mc_nc=0) THEN
-    VR(alarm).al_prev_mc=1
-ELSE
-    VR(alarm).al_prev_mc=0
-ENDIF
+'IF (IN(i_previous_mc_ok)=0 AND VR(commands_hmi).hmi_prev_mc_nc=0) THEN
+'    VR(alarm).al_prev_mc=1
+'ELSE
+'    VR(alarm).al_prev_mc=0
+'ENDIF
 
 IF (IN(i_printer_error)=1 AND VR(commands_hmi).hmi_printer_al_nc=0)_
         OR (IN(i_printer_error)=0 AND VR(commands_hmi).hmi_printer_al_nc=1)_

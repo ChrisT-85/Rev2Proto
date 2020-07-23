@@ -12,7 +12,7 @@ VR(infeed_pack_count)=0
 VR(commands_mc).mc_batch_end_flag=0
 
 BASE(ax_infeed)
-REG_INPUTS=i_infeed_sensor
+REG_INPUTS=0
 WAIT UNTIL IN(i_safety_infeed) AND IN(i_safety_general)
 
 start:
@@ -42,7 +42,7 @@ WAIT UNTIL (IN(i_safety_infeed) AND IN(i_safety_general) AND (IN(i_start_pb)) AN
 IF VR(commands_hmi).hmi_passive_conv_on=1 THEN
     GOTO passive_mode
 ELSE
-    WAIT UNTIL PROC_STATUS PROC(filmfeed)<>0
+    WAIT UNTIL PROC_STATUS PROC(proc_filmfeed)<>0
 ENDIF
 
 restart_trf:
@@ -57,7 +57,7 @@ WA(1000)
 FORWARD AXIS(ax_virtual_infeed)' Start virtual axis
 VR(pack_speed_count)=0
 TICKS=60000
-TICKS PROC(infeed_regist)=1500
+TICKS PROC(proc_infeed_regist)=1500
 
 REGIST(21,0,0,0,0)'REGIST(21, channel, source, edge, window)
 local_pack_in=0
@@ -65,14 +65,14 @@ local_pack_size=(VR(min_pack_size)+VR(max_pack_size))/2
 
 REPEAT
 'clock pulse
-    IF VR(commands_hmi).hmi_clockpulse AND (TICKS PROC(infeed_regist)<0) THEN
+    IF VR(commands_hmi).hmi_clockpulse AND (TICKS PROC(proc_infeed_regist)<0) THEN
         WAIT UNTIL VR(commands_seal).seal_pause=0 OR IN(i_safety_general)=0
         MOVELINK(VR(stp_increment)*10,VR(stp_increment)*10,1500,1800,ax_virtual_infeed,18,MPOS AXIS(ax_virtual_infeed)_
             +10000) AXIS(ax_stepper)
         WAIT LOADED AXIS(ax_stepper)
         VR(infeed_pack_count)=VR(infeed_pack_count)+1
         VR(batch_count)=VR(batch_count)+1
-        TICKS PROC(infeed_regist)=2000
+        TICKS PROC(proc_infeed_regist)=2000
         VR(pack_speed_count)=VR(pack_speed_count)+1
     ENDIF
 
@@ -82,12 +82,12 @@ REPEAT
         IF local_pack_in=0 THEN
             VR(pack_speed_count)=VR(pack_speed_count)+1
             local_pack_start=R_REGPOS(0)
-            'PRINT #0, "Reg Pos 0: "; REG_POS
+            PRINT #0, "Reg Pos 0: "; REG_POS
             REGIST(21,0,0,1,0)'REGIST(21, channel, source, edge, window)
             local_pack_in=1
         ELSE
             local_pack_size=(R_REGPOS(0)-local_pack_start)/128.2
-            'PRINT #0, "Pack size: "; local_pack_size
+            PRINT #0, "Pack size: "; local_pack_size
             REGIST(21,0,0,0,0)'REGIST(21, channel, source, edge, window)
             local_pack_in=0
         ENDIF
@@ -100,16 +100,16 @@ REPEAT
             OR local_pack_size< VR(min_pack_size) _
             OR VR(alarm).al_any_alarm _
             OR VR(alarm).al_next_mc _
-            OR VR(alarm).al_printer _
-            OR (local_pack_in=1 AND MPOS AXIS(0)>local_pack_start+(max_pack_size*128.2)) THEN
-
+            OR VR(alarm).al_printer THEN
+        ' OR (local_pack_in=1 AND MPOS AXIS(0)>local_pack_start+(max_pack_size*128.2)) THEN
+'
 '        IF (local_pack_in=1 AND MPOS AXIS(0)>(local_pack_start+VR(max_pack_size)*128.2)) THEN
 '            PRINT #0, "New Max Pack"
 '            local_pack_size=(MPOS AXIS(0)-local_pack_start)/128.2
 '        ENDIF
-        'PRINT #0, "ALARM POINT"
-        CANCEL(2) AXIS(ax_virtual_infeed)
-        CANCEL(2) AXIS(ax_outfeed)
+            PRINT #0, "ALARM POINT"
+            CANCEL(2) AXIS(ax_virtual_infeed)
+            CANCEL(2) AXIS(ax_outfeed)
     ENDIF
 'trans not ready
     IF VR(commands_trans).trans_not_ready=0 AND VR(infeed_pack_count)=VR(n_impressions)+1_
@@ -130,7 +130,7 @@ REPEAT
 'ppm
     IF TICKS<0 THEN
         TICKS=60000
-        IF VR(commands_conv).infeed_split_mode=1 THEN
+        IF VR(commands_conv).conv_infeed_split_mode=1 THEN
             VR(ppm)=(VR(pack_speed_count)/2)
         ELSE
             VR(ppm)=VR(pack_speed_count)

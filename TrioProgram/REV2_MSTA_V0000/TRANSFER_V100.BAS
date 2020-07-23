@@ -29,7 +29,7 @@ DECEL=VR(oc_dec)*1000
 SPEED=VR(oc_speed)*1000
 SRAMP=VR(oc_sshape)
 
-BASE(ax_oc)
+BASE(ax_transfer)
 WAIT UNTIL VR(infeed_pack_count)>=VR(n_impressions)
 
 IF VR(commands_trans).trans_pos_set_flag=0 THEN
@@ -55,7 +55,7 @@ MOVEABS(0) AXIS(ax_seal)
 WAIT UNTIL MPOS AXIS(ax_stepper) >= local_transfer_start-100
 
 IF VR(commands_trans).trans_final_inc_on=0 THEN
-    SPEED AXIS(ax_virtual_infeed)=(VR(infeed_speed)*VR(trf_pick_up_speed))
+    SPEED AXIS(ax_virtual_infeed)=(VR(infeed_speed)*VR(trf_pick_up_speed_percent))
 ENDIF
 
 IF VR(commands_trans).trans_final_inc_on THEN MOVEABS(VR(oc_close_pos)) AXIS(ax_oc)
@@ -68,7 +68,7 @@ local_sync_position = local_transfer_start 'The captured position on the sync_ax
 local_pos1= 0 'Absolute position on the first axis on the base array
 WAIT UNTIL MPOS AXIS(ax_seal)<1000
 
-SYNC(ax_stepper,local_time_to_sync,local_sync_position,1,local_pos1)
+SYNC(1,local_time_to_sync,local_sync_position,1,local_pos1)
 
 IF VR(commands_trans).trans_not_ready=1 THEN
     IF IDLE AXIS(ax_virtual_infeed)=0 THEN FORWARD AXIS(ax_virtual_infeed)
@@ -88,7 +88,7 @@ WAIT UNTIL SYNC_CONTROL =0 ' No synchronisation
 MOVEMODIFY(VR(trf_tool_pos)*10)
 MOVE(50) AXIS(ax_oc)
 WAIT UNTIL REMAIN <(VR(oc_open_ant_pos)) '1500 orig 3000
-IF VR(commands_conv).outfeed_pause=1 THEN CANCEL AXIS(ax_outfeed) ' Stop outfeed
+IF VR(commands_conv).conv_outfeed_pause=1 THEN CANCEL AXIS(ax_outfeed) ' Stop outfeed
 MOVEABS(276*5) AXIS(ax_seal)'Move Seal up 5mm
 MOVEABS(VR(oc_open_pos)) AXIS(ax_oc)' Open Jaws
 
@@ -98,6 +98,6 @@ ELSE
     WAIT UNTIL MPOS AXIS(ax_oc)<(VR(oc_open_pos)+1500)'34.6mm '3000
 ENDIF
 
-IF VR(commands_conv).outfeed_pause=1 THEN FORWARD AXIS(ax_outfeed) ' restart outfeed
+IF VR(commands_conv).conv_outfeed_pause=1 THEN FORWARD AXIS(ax_outfeed) ' restart outfeed
 IF VR(commands_seal).seal_bypass=0 THEN VR(commands_seal).seal_start=1 'Do not Seal if seal bypass
 GOTO start

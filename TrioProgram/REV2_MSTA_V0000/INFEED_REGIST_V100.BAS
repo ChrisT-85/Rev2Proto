@@ -68,9 +68,9 @@ BASE(ax_infeed)
 VR(infeed_pack_count)=VR(infeed_pack_count)+1
 VR(batch_count)=VR(batch_count)+1
 
-IF split_mode=1 THEN
-    slipt_wait_pos_act=MPOS+slipt_wait_pos*10
-    WAIT UNTIL (MPOS>slipt_wait_pos_act OR IN(i_safety_infeed)=0)
+IF VR(commands_conv).conv_infeed_split_mode=1 THEN
+    local_split_wait_pos_act=MPOS+(VR(split_wait_pos)*10)
+    WAIT UNTIL (MPOS>local_split_wait_pos_act OR IN(i_safety_infeed)=0)
 ENDIF
 
 GOTO loop

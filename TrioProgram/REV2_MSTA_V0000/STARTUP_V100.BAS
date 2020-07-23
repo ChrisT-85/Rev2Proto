@@ -109,10 +109,17 @@ CONSTANT "axis_RS_limit_active",10 '     bit10 - RS limit active
 
 ' Processes
 '==========================================
-CONSTANT "filmfeed", 9
-CONSTANT "infeed_regist", 20
+CONSTANT "proc_main", 1
+CONSTANT "proc_hmi", 2
+CONSTANT "proc_gen_data", 3
+CONSTANT "proc_max_torques", 4
+CONSTANT "proc_infeed_main", 5
+CONSTANT "proc_transfer", 6
+CONSTANT "proc_seal", 7
+CONSTANT "proc_rewind", 8
+CONSTANT "proc_filmfeed", 9
 
-
+CONSTANT "proc_infeed_regist", 20
 
 'alarms
 '==========================================
@@ -172,8 +179,8 @@ CONSTANT "PPM",10 ' was 108 for data?
 '==========================================
 CONSTANT "commands_conv",11
 '---------------------------------- bit constants for commands_film
-CONSTANT "infeed_split_mode",0 '   bit0 - infeed split mode
-CONSTANT "outfeed_pause",1 '       bit1 - outfeed pause
+CONSTANT "conv_infeed_split_mode",0 '   bit0 - infeed split mode
+CONSTANT "conv_outfeed_pause",1 '       bit1 - outfeed pause
 '----------------------------------------------------------------
 
 'ax_infeed 0----------------------------------
@@ -209,7 +216,8 @@ CONSTANT "infeed_speed",32
 CONSTANT "infeed_acc",33
 CONSTANT "infeed_dec",34
 CONSTANT "infeed_pack_count",35
-'CONSTANT "slipt_wait_pos",36
+CONSTANT "pack_speed_count",36
+CONSTANT "split_wait_pos",37
 
 
 'Outfeed
@@ -266,14 +274,13 @@ CONSTANT "film_dec",72
 CONSTANT "rw_stall_torque",73
 CONSTANT "rw_acc_torque",74
 CONSTANT "rw_run_torque",75
-CONSTANT "film_travel_aft_mark",75
-CONSTANT "film_brake_min_torque",76
-CONSTANT "film_brake_max_torque",77
-CONSTANT "min_diameter",78
-CONSTANT "max_diameter",79
-CONSTANT "diameter",80
-'CONSTANT "auto_reel_tension_on",315
-'CONSTANT "reel_brake_force",160
+CONSTANT "film_travel_aft_mark",76
+CONSTANT "film_brake_min_torque",77
+CONSTANT "film_brake_max_torque",78
+CONSTANT "min_diameter",79
+CONSTANT "max_diameter",80
+CONSTANT "diameter",81
+
 
 ''transfer
 '==========================================
@@ -281,9 +288,8 @@ CONSTANT "commands_trans",90
 '---------------------------------- bit constants for commands_mc
 CONSTANT "trans_not_ready",0 '           bit0 - start film
 CONSTANT "trans_pos_set_flag",1 '          bit1 - reg film on
-CONSTANT "film_print_speed_save",2 '    bit2 - Printer Speed Save
-CONSTANT "film_on_transfer",3 '         bit3 - film on Transfer
-CONSTANT "trans_final_inc_on",4 '       bit4 - Final Increment On
+'CONSTANT "film_print_speed_save",2 '    bit2 - Printer Speed Save
+CONSTANT "trans_final_inc_on",3 '       bit4 - Final Increment On
 '----------------------------------------------------------------
 
 'ax_transfer 2----------------------------------
@@ -294,21 +300,14 @@ CONSTANT "mspeed_transfer",94
 CONSTANT "drive_torque_transfer",95
 CONSTANT "mtype_transfer",96
 
-'CONSTANT "pack_speed_count",97
-CONSTANT "trf_tool_pos"98
-CONSTANT "trf_speed",99
-CONSTANT "trf_acc",100
-CONSTANT "trf_dec"101
+CONSTANT "trf_tool_pos"97
+CONSTANT "trf_speed",98
+CONSTANT "trf_acc",99
+CONSTANT "trf_dec"100
 CONSTANT "trf_sshape",101
-'CONSTANT "trf_pick_up_speed",102
-'CONSTANT "transfer_offset",103
-'CONSTANT "extra_pack_infeed",104
-'CONSTANT "transfer_start",105
-'CONSTANT "trf_position_set_flag",106
-'CONSTANT "stp_mid_increment",107
-CONSTANT "gbl_trf_start",108
-CONSTANT "brake_res_temp",110
-
+CONSTANT "gbl_trf_start",102
+CONSTANT "brake_res_temp",103
+CONSTANT "trf_pick_up_speed_percent",104
 
 ''oc
 '==========================================
@@ -334,10 +333,19 @@ CONSTANT "oc_open_ant_pos",124 ' OC open anticipation
 '==========================================
 CONSTANT "commands_seal",130
 '---------------------------------- bit constants for commands_seal
-CONSTANT "seal_bypass",0 '          bit0 - seal_bypass
-CONSTANT "seal_start",1 '           bit1 - start seal
-CONSTANT "seal_pause",2 '           bit2 - seal pause
-CONSTANT "seal_cycle",3 '           bit2 - seal cycle
+CONSTANT "seal_bypass",0 '              bit0 - seal_bypass
+CONSTANT "seal_start",1 '               bit1 - start seal
+CONSTANT "seal_cycle",2 '               bit2 - seal cycle
+CONSTANT "seal_pack_crush_on",3 '       bit3 - pack crush on
+CONSTANT "seal_pause",4 '               bit4 - pack crush seal pause
+CONSTANT "seal_manual_page",5 '         bit5 - pack crush manual page
+CONSTANT "seal_manual_button",6 '       bit6 - pack crush manual button
+CONSTANT "seal_pause_memory",7 '        bit7 - pack crush pause memory
+CONSTANT "seal_eject_cushion_up",8 '    bit8 - seal cushion eject up on
+CONSTANT "seal_eject_cushion_down",9 '  bit9 - seal cushion eject down on
+CONSTANT "seal_cushion_up",10 '         bit10 - seal cushion up o
+CONSTANT "seal_cushion_down",11 '       bit11 - seal cushion down o
+
 '----------------------------------------------------------------
 'ax_seal 6---------------------------------
 CONSTANT "axisstatus_seal",131
@@ -347,53 +355,33 @@ CONSTANT "mspeed_seal",134
 CONSTANT "drive_torque_seal",135
 CONSTANT "mtype_seal",136
 
-'CONSTANT "default_Temperature",137
-CONSTANT "seal_torque_rms",157
+CONSTANT "seal_home_offset",137
+CONSTANT "seal_torque_rms",138
+CONSTANT "seal_max_torque",139
+CONSTANT "seal_hold_torque",140
 
-'CONSTANT "seal_up_pos", 42
-'CONSTANT "seal_up1_pos",43
-'CONSTANT "seal_up2_pos",44
+CONSTANT "seal_acc" ,141
+CONSTANT "seal_dec" ,142
+CONSTANT "seal_speed" ,143
+CONSTANT "seal_up_pos", 144
+CONSTANT "seal_hold_pos",145
+CONSTANT "seal_end_pos",146
+CONSTANT "seal_time",147
+
+CONSTANT "seal_crush_pos", 148
+CONSTANT "seal_crush_count",149
+CONSTANT "seal_compress_pos",150
+CONSTANT "seal_compress_speed",151
+CONSTANT "seal_decompress_pos",152
+CONSTANT "seal_decompress_speed",153
+CONSTANT "seal_eject_speed",154
+CONSTANT "seal_eject_pos_top",155
+CONSTANT "seal_eject_pos_bottom",156
+
+CONSTANT "seal_count",157
+CONSTANT "seal_count1",158
+
 'CONSTANT "seal_gas_pos",45
-'CONSTANT "mapf_on" ,46
-'CONSTANT "gas_time" ,47
-'CONSTANT "seal_acc" ,48
-'CONSTANT "seal_dec" ,49
-'CONSTANT "seal_dec_mapf", 50
-'CONSTANT "seal_speed" ,51
-'CONSTANT "seal_time",109
-
-'CONSTANT "seal_pause",55
-'CONSTANT "pack_crush_on_off", 56
-'CONSTANT "seal_crush_pos", 57
-'CONSTANT "seal_cycle",58
-
-CONSTANT "seal_home_offset",158
-'CONSTANT "seal_compress_speed",330
-'CONSTANT "seal_eject_pos_top",331
-'CONSTANT "seal_eject_pos_bottom",332
-'CONSTANT "seal_eject_speed",333
-'CONSTANT "quiet_mode",334
-'
-'CONSTANT "seal_decompress_speed",336
-'CONSTANT "seal_eject_cushion_up",337
-'CONSTANT "seal_eject_cushion_down",338
-'CONSTANT "seal_cusion_up",339
-'CONSTANT "seal_cusion_down",340
-'CONSTANT "crush_count",341
-'CONSTANT "seal_compress_pos",342
-'CONSTANT "seal_decompress_pos",343
-'CONSTANT "seal_pause_aux",344
-
-'CONSTANT "seal_max_torque",105
-'CONSTANT "seal_hold_torque",106
-'CONSTANT "seal_max_torque1",107
-CONSTANT "seal_count",163
-CONSTANT "seal_count1",164
-
-'
-''CONSTANT "pack_crush_on_off",230
-
-
 
 'CONSTANT "op_status48to63",178
 'CONSTANT "gas_setting",179
@@ -439,25 +427,3 @@ CONSTANT "seal_count1",164
 
 RUN "MAIN_V100",1
 
-'processes
-'
-'1  - MAIN *
-'2  - HMI *
-'3  - GENERATE DATA *
-'4  - MAX TORQUES *
-'5  - INFEED MAIN *
-'6  - TRANSFER *
-'7  - SEAL *
-'8  - REWIND TOURQUE *
-'9  - FILM FEED *
-'10 - MIN_MAX *
-'11 - TIMER *
-'12 -
-'13 -
-'14 -
-'15 - AUTO_TENSION *
-'16 -
-'17 -
-'18 -
-'19 -
-'20 - INFEED REGIST *
