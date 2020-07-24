@@ -370,6 +370,8 @@ REPEAT
     WA(300)
 UNTIL IN(i_safety_infeed)=1 AND IN(i_safety_general)=1 'Wait for safety
 
+OP(o_stop_pb_led,ON)
+
 WA(3000)
 DATUM(0)
 WA(100)
@@ -547,78 +549,47 @@ WAIT IDLE
 RUN "MAX_TORQUES_V100",4
 '
 restart:
-'PRINT #0, "Restart Jump point"
-'
-''*********************************************** Machine Mode
-'' 0 -> Atmos/Map-f
-'' 1 -> Passive Conveyor
-'' 2 -> SkinPAC
-'' 3 -> Vac Test
-'
-'IF machine_mode=0 OR machine_mode=2 THEN ' atmos/map-f or skinpac mode
-'    'STOP "VAC_TEST"
-'    IF PROC_STATUS PROC(5)=0 THEN 'proc 5 = INFEED_MAIN
-RUN "INFEED_MAIN_V100",5
-'        PRINT #0, "Run INFEED_MAIN"
-'    ENDIF
-'    IF PROC_STATUS PROC(20)=0 THEN 'proc 5 = INFEED_REGIST
-RUN "INFEED_REGIST_V100",20
-'        PRINT #0, "Run INFEED_REGIST"
-'    ENDIF
-RUN"TRANSFER_V100",6
-'    PRINT #0, "Run Transfer"
-'    IF machine_mode=0 THEN
-'        'STOP "SEAL_SKINPAC"
-'        'WA(500)
-RUN"SEAL_V100",7
-'        PRINT #0, "Atmos/Map-F Mode"
-'    ELSE
-'        STOP "SEAL"
-'        WA(500)
-'        'RUN "SEAL_SKINPAC",7
-'        PRINT #0, "SkinPAC Mode"
-'    ENDIF
-RUN"REWIND_V100",8
-'    PRINT #0, "Run Rewind"
-RUN"FILMFEED_V100",9
-'    PRINT #0, "Run Film Feed"
-'
-'    BASE(16) ' PWM Brake
-'    IF MTYPE AXIS(16)<>10 THEN FORWARD AXIS(16)
-'    PSWITCH(0,ON,16,11,ON,0,reel_brake_force) ' PWM Brake
-'    PRINT #0, "Start PWM Reel Brake"
-'
-'ELSEIF machine_mode=1 OR machine_mode=3 THEN ' passive conveyor or vac test mode
-'    IF machine_mode=3 THEN 'vac test mode
-'        STOP "INFEED_MAIN"
-'        STOP "INFEED_REGIST"
-'        WA(500)
-'        IF PROC_STATUS PROC(11)=0 THEN
-'            'RUN "VAC_TEST" ,11
-'            PRINT #0, "Start Vac Test Mode"
-'        ENDIF
-'
-'    ELSE 'passive conveyor mode
-'        IF PROC_STATUS PROC(5)=0 THEN 'proc 5 = INFEED_MAIN
-'            RUN "INFEED_MAIN",5
-'            PRINT #0, "Run INFEED_MAIN"
-'        ENDIF
-'    ENDIF
-'ENDIF
+PRINT #0, "Restart Jump point"
+
+IF VR(commands_hmi).hmi_passive_conv_on=0 THEN
+
+IF PROC_STATUS PROC(proc_infeed_main)=0 THEN
+    RUN "INFEED_MAIN_V100",proc_infeed_main
+    PRINT #0, "Run INFEED_MAIN"
+ENDIF
+IF PROC_STATUS PROC(proc_infeed_regist)=0 THEN 'proc 5 = INFEED_REGIST
+    RUN "INFEED_REGIST_V100",proc_infeed_regist
+    PRINT #0, "Run INFEED_REGIST"
+ENDIF
+RUN"TRANSFER_V100",proc_transfer
+PRINT #0, "Run Transfer"
+RUN"SEAL_V100",proc_seal
+PRINT #0, "Atmos/Map-F Mode"
+RUN"REWIND_V100",proc_rewind
+PRINT #0, "Run Rewind"
+RUN"FILMFEED_V100",proc_filmfeed
+PRINT #0, "Run Film Feed"
+
+ELSE
+    IF PROC_STATUS PROC(proc_infeed_main)=0 THEN
+        RUN "INFEED_MAIN_V100",proc_infeed_main
+        PRINT #0, "Run INFEED_MAIN"
+    ENDIF
+ENDIF
 
 WAIT UNTIL IN(i_safety_infeed)=0 OR IN(i_safety_general)=0 ' Wait until safety OFF
 PRINT #0, "Safety Off "
 
-OP(o_mc_running,0) ' Machine running off
-'
-'IF machine_mode=1 THEN 'passive conveyor
-'    CANCEL(2) AXIS(0)
-'    CANCEL(2) AXIS(1)
-'    CANCEL(2) AXIS(7)
-'ENDIF
+VR(commands_mc).mc_running=0
 
-CANCEL(2) AXIS(8)
-AXIS_ENABLE AXIS(8)=OFF
+IF VR(commands_hmi).hmi_passive_conv_on=1 THEN
+    CANCEL(2) AXIS(ax_infeed)
+    CANCEL(2) AXIS(ax_stepper)
+    CANCEL(2) AXIS(ax_outfeed)
+ENDIF
+
+CANCEL(2) AXIS(ax_filmfeedbrake)
+AXIS_ENABLE AXIS(ax_filmfeedbrake)=OFF
 
 STOP"TRANSFER_V100"
 STOP"SEAL_V100"
@@ -627,41 +598,40 @@ STOP"FILMFEED_V100"
 
 PRINT #0, "Programs Off "
 
-CANCEL(2) AXIS(2)
-CANCEL(2) AXIS(3)
-CANCEL(2) AXIS(4)
-CANCEL(2) AXIS(5)
-CANCEL(2) AXIS(6)
-CANCEL(2) AXIS(7)
-CANCEL(2) AXIS(16)
+CANCEL(2) AXIS(ax_transfer)
+CANCEL(2) AXIS(ax_rewind)
+CANCEL(2) AXIS(ax_filmfeed)
+CANCEL(2) AXIS(ax_oc)
+CANCEL(2) AXIS(ax_seal)
+CANCEL(2) AXIS(ax_outfeed)
+CANCEL(2) AXIS(ax_filmfeedbrake)
 PRINT #0, "Cancel all moves"
 WA(500)
 OP(o_magnets_ssr,OFF) 'o_magnets_ssr
-'OP(o_gas_valve1,OFF) 'o_gas_valve1
-'OP(o_gas_valve2,OFF) 'o_gas_valve2
-AXIS_ENABLE AXIS(2)=OFF
-AXIS_ENABLE AXIS(3)=OFF
-AXIS_ENABLE AXIS(4)=OFF
-AXIS_ENABLE AXIS(5)=OFF
-AXIS_ENABLE AXIS(6)=OFF
-AXIS_ENABLE AXIS(7)=OFF
+AXIS_ENABLE AXIS(ax_transfer)=OFF
+AXIS_ENABLE AXIS(ax_rewind)=OFF
+AXIS_ENABLE AXIS(ax_filmfeed)=OFF
+AXIS_ENABLE AXIS(ax_oc)=OFF
+AXIS_ENABLE AXIS(ax_seal)=OFF
+AXIS_ENABLE AXIS(ax_outfeed)=OFF
+AXIS_ENABLE AXIS(ax_filmfeedbrake)=OFF
 PRINT #0, "Enable off 1"
 
 WA(800)
-AXIS_ENABLE AXIS(0)=OFF
-AXIS_ENABLE AXIS(1)=OFF
+AXIS_ENABLE AXIS(ax_infeed)=OFF
+AXIS_ENABLE AXIS(ax_stepper)=OFF
 PRINT #0, "Enable off 2"
-PSWITCH(0,OFF) ' PWM Brake
 WA(100)
 
-SERVO AXIS(0)=OFF
-SERVO AXIS(1)=OFF
-SERVO AXIS(2)=OFF
-SERVO AXIS(3)=OFF
-SERVO AXIS(4)=OFF
-SERVO AXIS(5)=OFF
-SERVO AXIS(6)=OFF
-SERVO AXIS(7)=OFF
+SERVO AXIS(ax_infeed)=OFF
+SERVO AXIS(ax_stepper)=OFF
+SERVO AXIS(ax_transfer)=OFF
+SERVO AXIS(ax_rewind)=OFF
+SERVO AXIS(ax_filmfeed)=OFF
+SERVO AXIS(ax_oc)=OFF
+SERVO AXIS(ax_seal)=OFF
+SERVO AXIS(ax_outfeed)=OFF
+SERVO AXIS(ax_filmfeedbrake)=OFF
 'PRINT #0, "Servo OFF"
 ''OP(o_brake_ssr,OFF) ' Reel Brake off
 'OP(o_brake_ssr,OFF) ' Reel Brake off
@@ -673,8 +643,8 @@ SERVO AXIS(7)=OFF
 BASE(ax_transfer)
 SYNC(4,400)' Stop Syncronisation
 WAIT UNTIL SYNC_CONTROL =0
-'seal_pause=0
-'seal_crush_count=0
+VR(seal_pause)=0
+VR(seal_crush_count)=0
 REPEAT
     OP(o_flashing_reset,ON)
     TICKS=300
@@ -694,43 +664,44 @@ FOR i=2 TO 7
     IF (AXISSTATUS AND 511) >0 THEN
         PRINT #0, "axisstatus ",AXISSTATUS
         DATUM(7)
-        PRINT #0, "Datum(7) ax",i
+
     ENDIF
     WA(100)
 NEXT i
 
-AXIS_ENABLE AXIS(0)=ON
-AXIS_ENABLE AXIS(1)=ON
-AXIS_ENABLE AXIS(2)=ON
-AXIS_ENABLE AXIS(3)=OFF
-AXIS_ENABLE AXIS(4)=ON
-AXIS_ENABLE AXIS(5)=ON
-AXIS_ENABLE AXIS(6)=ON
-AXIS_ENABLE AXIS(7)=ON
+AXIS_ENABLE AXIS(ax_infeed)=ON
+AXIS_ENABLE AXIS(ax_stepper)=ON
+AXIS_ENABLE AXIS(ax_transfer)=ON
+AXIS_ENABLE AXIS(ax_rewind)=OFF
+AXIS_ENABLE AXIS(ax_filmfeed)=ON
+AXIS_ENABLE AXIS(ax_oc)=ON
+AXIS_ENABLE AXIS(ax_seal)=ON
+AXIS_ENABLE AXIS(ax_outfeed)=ON
+AXIS_ENABLE AXIS(ax_filmfeedbrake)=ON
 PRINT #0, "Axis Enable"
 WA(800)
 
-SERVO AXIS(0)=ON
-SERVO AXIS(1)=ON
-SERVO AXIS(2)=ON
-SERVO AXIS(3)=OFF
-SERVO AXIS(4)=ON
-SERVO AXIS(5)=ON
-SERVO AXIS(6)=ON
-SERVO AXIS(7)=ON
+SERVO AXIS(ax_infeed)=ON
+SERVO AXIS(ax_stepper)=ON
+SERVO AXIS(ax_transfer)=ON
+SERVO AXIS(ax_rewind)=OFF
+SERVO AXIS(ax_filmfeed)=ON
+SERVO AXIS(ax_oc)=ON
+SERVO AXIS(ax_outfeed)=ON
+SERVO AXIS(ax_filmfeedbrake)=ON
 PRINT #0, "Servo ON"
 
 WA(100)
 
-BASE(4) 'Filmfeed
-SPEED=film_speed*1000
-ACCEL=film_acc*1000
-DECEL=film_dec*1000
+BASE(ax_filmfeed) 'Filmfeed
+SPEED=(VR(film_speed)*1000)
+ACCEL=(VR(film_acc)*1000)
+DECEL=(VR(film_dec)*1000)
 SRAMP=249
 FE_LIMIT=15000
 PRINT #0, "Film Feed Par Set, Ax4"
 
-BASE(5) ' Jaws
+BASE(ax_oc) ' Jaws
 CANCEL(2)
 WA(100)
 RS_LIMIT=-200
@@ -748,17 +719,18 @@ REPEAT
     IF IN(i_safety_general)=0 THEN GOTO restart 'If safety off goto restart
     IF -1200>DRIVE_TORQUE OR DRIVE_TORQUE>1200 THEN
         PRINT #0, "Overtorque on Home Ret AX 5: ";DRIVE_TORQUE
-        alarm_max_torque.5=1
+        alarm_max_torque.ax_oc=1
         GOTO restart_datum
     ENDIF
 UNTIL IDLE
 
 PRINT #0, "Jaws Ret to 0 finish"
 
-ACCEL=oc_acc*1000
-DECEL=oc_dec*1000
-SPEED=oc_speed*1000
-SRAMP=oc_sshape
+ACCEL=(VR(oc_acc)*1000)
+DECEL=(VR(oc_dec)*1000)
+
+SPEED=(VR(oc_speed)*1000)
+SRAMP=VR(oc_sshape)
 FE_LIMIT=3000
 
 PRINT #0, "Jaws Par Set 1, Ax5"
@@ -782,7 +754,7 @@ REPEAT
     IF IN(i_safety_general)=0 THEN GOTO restart 'If safety off goto restart
     IF -1200>DRIVE_TORQUE AXIS(2) OR DRIVE_TORQUE AXIS(2)>1200 THEN
         PRINT #0, "Overtorque on Home Ret AX 2: ";DRIVE_TORQUE AXIS(2)
-        alarm_max_torque.2=1
+        alarm_max_torque.ax_transfer=1
         GOTO restart_datum
     ENDIF
 UNTIL IDLE
@@ -791,12 +763,12 @@ PRINT #0, "Transfer Ret to 0 finish"
 
 FE_LIMIT=15000
 SRAMP=140
-ACCEL=trf_acc*500
-DECEL=trf_dec*500
-SPEED=trf_speed*500
+ACCEL=(VR(trf_acc)*500)
+DECEL=(VR(trf_dec)*500)
+SPEED=(VR(trf_speed)*500)
 PRINT #0, "Transfer Par Set 1, Ax2"
 
-BASE(6) 'Seal
+BASE(ax_seal) 'Seal
 RS_LIMIT=-640
 FS_LIMIT=47000
 FE_LIMIT=2000
@@ -811,19 +783,19 @@ REPEAT
     IF IN(i_safety_general)=0 THEN GOTO restart 'If safety off goto restart
     IF -1200>DRIVE_TORQUE AXIS(6) OR DRIVE_TORQUE AXIS(6)> 1200 THEN
         PRINT #0, "Overtorque on home Ret AX 6: ";-DRIVE_TORQUE AXIS(6)
-        alarm_max_torque.6=1
+        alarm_max_torque.ax_seal=1
         GOTO restart_datum
     ENDIF
 UNTIL IDLE
 PRINT #0, "Seal Ret to 0 finish"
 FE_LIMIT=7000
-SPEED=seal_speed*1000
-ACCEL=seal_acc*1000
-DECEL=seal_dec*1000
+SPEED=(VR(seal_speed)*1000)
+ACCEL=(VR(seal_acc)*1000)
+DECEL=(VR(seal_dec)*1000)
 SRAMP=100
 PRINT #0, "Seal Par Set 1 , Ax6"
 WA(500)
 GOTO restart
 
-'this has been added right now
+
 

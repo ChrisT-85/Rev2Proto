@@ -36,7 +36,7 @@
   <Content Name="Document_Program_MAX_TORQUES_V100" />
   <Content Name="Document_Program_TRANSFER_V100" />
   <Content Name="tool_FindReplaceWindow">
-    <Tool MainMode="QuickFind">
+    <Tool MainMode="FindInProject">
       <Options MatchWholeWord="true" MatchCase="true" SearchUp="false" UseRegularExpressions="false">
         <TargetItemTypes Mode="All" />
       </Options>
