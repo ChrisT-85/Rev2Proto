@@ -63,7 +63,7 @@ IF VR(commands_seal).seal_eject_cushion_up=1 AND VR(seal_eject_pos_bottom)<VR(se
     MOVEABS(VR(seal_eject_pos_bottom)*10) AXIS(ax_seal)
         IF debug_seal=1 THEN PRINT #7,"Move to Eject Cushion Up Pos "
     ELSE
-        MOVEABS(seal_up_pos*10) AXIS(6)
+        MOVEABS(VR(seal_up_pos)*10) AXIS(6)
         IF debug_seal=1 THEN PRINT #7,"Move to Atmos Pos "
     ENDIF
 
