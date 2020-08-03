@@ -9,7 +9,7 @@
 
 BASE(ax_virtual_infeed)
 REG_INPUTS=0
-local_sensor_pos=10000
+local_sensor_pos=8541
 loop:
 BASE(ax_virtual_infeed)
 WAIT UNTIL NOT IDLE AXIS(ax_virtual_infeed)
@@ -26,7 +26,7 @@ local_correction= local_sensor_pos-local_move_left-50
 'PRINT #0, "Correction: ";local_correction
 
 IF VR(commands_trans).trans_final_inc_on AND VR(infeed_pack_count)=VR(n_impressions) THEN
-    IF (local_correction < 10000) THEN
+    IF (local_correction < 8541) THEN
         local_correction_start=(VR(stp_final_increment)-(VR(stp_increment)/2)*10)
         'WAIT UNTIL (ENDMOVE-MPOS < (stp_increment*10)*0.85) OR IN(i_safety_infeed)=0 'If Safety infeed off go to cancel
         WAIT UNTIL (REMAIN< local_correction) OR IN(i_safety_infeed)=0 'If Safety infeed off go to cancel
@@ -37,8 +37,8 @@ IF VR(commands_trans).trans_final_inc_on AND VR(infeed_pack_count)=VR(n_impressi
             GOTO loop
         ENDIF
         SPEED AXIS(ax_infeed) = VP_SPEED AXIS(ax_virtual_infeed)
-        MOVE (local_correction-10000) AXIS(ax_infeed)
-        local_start_pos=local_start_pos-(local_correction-10000)
+        MOVE (local_correction-8541) AXIS(ax_infeed)
+        local_start_pos=local_start_pos-(local_correction-8541)
     ENDIF
 ELSE
     IF (local_correction < 100) THEN
@@ -56,7 +56,7 @@ ELSE
 ENDIF
 
 
-IF VR(infeed_pack_count)=VR(n_impressions)-1 AND VR(commands_trans).trans_final_inc_on THEN 'If final increment ON
+IF VR(infeed_pack_count)=(VR(n_impressions)-1) AND VR(commands_trans).trans_final_inc_on THEN 'If final increment ON
     MOVELINK(VR(stp_final_increment)*10,VR(stp_final_increment)*10,1000,1000,ax_virtual_infeed,18,local_start_pos)
 ELSE
     MOVELINK((VR(stp_increment)*10),(VR(stp_increment)*10),1000,1000,ax_virtual_infeed,18,local_start_pos)

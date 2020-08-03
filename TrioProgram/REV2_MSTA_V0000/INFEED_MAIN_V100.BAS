@@ -86,7 +86,7 @@ REPEAT
             REGIST(21,0,0,1,0)'REGIST(21, channel, source, edge, window)
             local_pack_in=1
         ELSE
-            local_pack_size=(R_REGPOS(0)-local_pack_start)/128.2
+            local_pack_size=(R_REGPOS(0)-local_pack_start)/109.5
             PRINT #0, "Pack size: "; local_pack_size
             REGIST(21,0,0,0,0)'REGIST(21, channel, source, edge, window)
             local_pack_in=0
@@ -100,24 +100,24 @@ REPEAT
             OR local_pack_size< VR(min_pack_size) _
             OR VR(alarm).al_any_alarm _
             OR VR(alarm).al_next_mc _
-            OR VR(alarm).al_printer THEN
-        ' OR (local_pack_in=1 AND MPOS AXIS(0)>local_pack_start+(max_pack_size*128.2)) THEN
-'
-'        IF (local_pack_in=1 AND MPOS AXIS(0)>(local_pack_start+VR(max_pack_size)*128.2)) THEN
-'            PRINT #0, "New Max Pack"
-'            local_pack_size=(MPOS AXIS(0)-local_pack_start)/128.2
-'        ENDIF
-            PRINT #0, "ALARM POINT"
-            CANCEL(2) AXIS(ax_virtual_infeed)
-            CANCEL(2) AXIS(ax_outfeed)
+            OR VR(alarm).al_printer _
+            OR (local_pack_in=1 AND MPOS AXIS(0)>local_pack_start+(max_pack_size*109.5)) THEN
+
+        IF (local_pack_in=1 AND MPOS AXIS(0)>(local_pack_start+VR(max_pack_size)*109.5)) THEN
+            PRINT #0, "New Max Pack"
+            local_pack_size=(MPOS AXIS(0)-local_pack_start)/109.5
+        ENDIF
+        PRINT #0, "ALARM POINT"
+        CANCEL(2) AXIS(ax_virtual_infeed)
+        CANCEL(2) AXIS(ax_outfeed)
     ENDIF
 'trans not ready
-    IF VR(commands_trans).trans_not_ready=0 AND VR(infeed_pack_count)=VR(n_impressions)+1_
-            AND (MPOS AXIS(ax_seal)>4500 OR MPOS AXIS(ax_stepper)>1000) THEN
+    IF VR(commands_trans).trans_not_ready=0 AND VR(infeed_pack_count)=(VR(n_impressions)+1)_
+            AND (MPOS AXIS(ax_seal)>4500 OR MPOS AXIS(ax_transfer)>1000) THEN
         PRINT #0, "TRF NOT READY"
         PRINT #0, "infeed_pack_count: ";VR(infeed_pack_count)
         PRINT #0, "Seal MPOS seal: ";MPOS AXIS(ax_seal)
-        PRINT #0, "Seal MPOS trf: ";MPOS AXIS(ax_stepper)
+        PRINT #0, "Seal MPOS trf: ";MPOS AXIS(ax_transfer)
         local_trf_step_needed=VR(gbl_trf_start)-4000
         VR(commands_trans).trans_not_ready=1
     ENDIF
@@ -167,7 +167,7 @@ batch_end:
 BASE(ax_stepper)
 PRINT #0, "Batch End Start"
 WA(500)
-WAIT UNTIL (MPOS AXIS(ax_stepper)<1000 AND MPOS AXIS(ax_seal)<4000)
+WAIT UNTIL (MPOS AXIS(ax_transfer)<1000 AND MPOS AXIS(ax_seal)<4000)
 CANCEL AXIS(ax_virtual_infeed)
 IF VR(infeed_pack_count)=0 THEN VR(commands_mc).mc_batch_end_flag=1
 
