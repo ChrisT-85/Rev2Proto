@@ -687,6 +687,7 @@ SERVO AXIS(ax_transfer)=ON
 SERVO AXIS(ax_rewind)=OFF
 SERVO AXIS(ax_filmfeed)=ON
 SERVO AXIS(ax_oc)=ON
+SERVO AXIS(ax_seal)=ON
 SERVO AXIS(ax_outfeed)=ON
 SERVO AXIS(ax_filmfeedbrake)=ON
 PRINT #0, "Servo ON"
