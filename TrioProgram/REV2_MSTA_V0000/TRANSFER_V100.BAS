@@ -17,9 +17,9 @@ WAIT IDLE
 start:
 
 BASE(ax_transfer)
-ACCEL=VR(trf_acc)*1400
-DECEL=VR(trf_dec)*1400
-SPEED=VR(trf_speed)*1400
+ACCEL=VR(trf_acc)*1000
+DECEL=VR(trf_dec)*1000
+SPEED=VR(trf_speed)*1000
 
 MOVEABS(0)
 

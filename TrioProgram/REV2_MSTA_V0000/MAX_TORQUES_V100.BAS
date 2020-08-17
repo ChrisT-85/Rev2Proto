@@ -82,16 +82,18 @@ IF IN(i_safety_general) THEN
 
 ENDIF
 
-IF (MSPEED AXIS(ax_infeed)>100) AND VR(commands_hmi).hmi_batch_end THEN
+IF (MSPEED AXIS(ax_virtual_infeed)>100) AND VR(commands_hmi).hmi_batch_end=0 THEN
     VR(commands_mc).mc_running=1
     IF IDLE AXIS(ax_outfeed) THEN FORWARD AXIS(ax_outfeed) ' Start outfeed
     WA(200)
     OP(o_mc_running,1)
+    OP(o_stop_pb_led,OFF)
     OP(o_start_pb_led,ON)
 ELSE
     VR(commands_mc).mc_running=0
     OP(o_mc_running,0)
     OP(o_start_pb_led,OFF)
+    OP(o_stop_pb_led,ON)
 ENDIF
 
 
