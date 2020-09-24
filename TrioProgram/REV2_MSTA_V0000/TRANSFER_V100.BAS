@@ -87,7 +87,7 @@ SPEED AXIS(ax_virtual_infeed)=VR(infeed_speed)*10
 WAIT UNTIL SYNC_CONTROL =0 ' No synchronisation
 MOVEMODIFY(VR(trf_tool_pos)*10)
 MOVE(50) AXIS(ax_oc)
-WAIT UNTIL REMAIN <(VR(oc_open_ant_pos)) '1500 orig 3000
+WAIT UNTIL REMAIN <((VR(oc_open_ant_pos)OR 1500)) '1500 orig 3000
 IF VR(commands_conv).conv_outfeed_pause=1 THEN CANCEL AXIS(ax_outfeed) ' Stop outfeed
 MOVEABS(276*5) AXIS(ax_seal)'Move Seal up 5mm
 MOVEABS(VR(oc_open_pos)) AXIS(ax_oc)' Open Jaws

@@ -35,9 +35,23 @@ VR(alarm).al_gas_pressure=0
 VR(alarm).al_reg_film=0
 VR(commands_hmi).hmi_clockpulse=0
 
+base_check:
+
+WAIT UNTIL (IN(i_safety_infeed) AND IN(i_safety_general))
+IF IN(i_base_tool_lock_sens)=0 THEN
+    VR(alarm).al_base_tool_not_locked=1
+ELSE
+    VR(alarm).al_base_tool_not_locked=0
+ENDIF
+
+IF VR(alarm).al_base_tool_not_locked=1 THEN GOTO base_check
+
+
 WAIT UNTIL (IN(i_safety_infeed) AND IN(i_safety_general) AND (IN(i_start_pb)) AND IN(i_stop_pb) _
     AND VR(commands_trans).trans_not_ready=0 AND VR(alarm).al_prev_mc=0_
-    AND VR(alarm).al_next_mc=0 AND VR(alarm).al_any_alarm=0) 'safety and start
+    AND VR(alarm).al_next_mc=0 AND VR(alarm).al_any_alarm=0 OR IN(i_base_tool_lock_sens)=0) 'safety and start
+
+IF IN(i_base_tool_lock_sens)=0 THEN GOTO base_check
 
 IF VR(commands_hmi).hmi_passive_conv_on=1 THEN
     GOTO passive_mode

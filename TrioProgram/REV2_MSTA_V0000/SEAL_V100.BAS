@@ -151,7 +151,7 @@ torque=0
 'REV
 IF VR(seal_time)>=400 THEN MOVEABS(VR(seal_hold_pos)*10) AXIS(ax_seal)
 
-WA(seal_time)
+WA (VR(seal_time))
 VR(seal_hold_torque)=-DRIVE_TORQUE AXIS(ax_seal)
 
 IF VR(seal_time)>=400 THEN

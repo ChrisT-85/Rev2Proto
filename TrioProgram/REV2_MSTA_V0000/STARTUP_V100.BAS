@@ -137,7 +137,8 @@ CONSTANT "al_gas_err",7 '          bit7 - cannot obtain gas error
 CONSTANT "al_seal_limit",8 '       bit8 - seal limit error
 CONSTANT "al_prev_mc",9 '          bit9 - Previous Machine Error (warning)
 CONSTANT "al_printer",10 '         bit10 - Printer Alarm
-CONSTANT "al_next_mc",11 '         bit11 - Next Machine Ok
+CONSTANT "al_next_mc",11'         bit11 - Next Machine Ok
+CONSTANT "al_base_tool_not_locked",12 ' bit12 - Next Machine Ok
 '                                  spare bits 9-14
 CONSTANT "al_any_alarm",15 '       bit15- any alarm hmi
 '----------------------------------------------------------------
@@ -380,6 +381,7 @@ CONSTANT "seal_eject_pos_bottom",156
 
 CONSTANT "seal_count",157
 CONSTANT "seal_count1",158
+CONSTANT "seal_default_temp",159
 
 'CONSTANT "seal_gas_pos",45
 

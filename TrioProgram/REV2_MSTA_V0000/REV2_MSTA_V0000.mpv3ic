@@ -8,7 +8,9 @@
       <AxesInUse>
         <Index>0</Index>
         <Index>1</Index>
+        <Index>2</Index>
         <Index>4</Index>
+        <Index>8</Index>
         <Index>15</Index>
       </AxesInUse>
       <ParamsVisibility>
@@ -89,11 +91,11 @@
       </ViewerSettings>
       <View3DSettings />
       <TraceInfos>
-        <TraceInfo State="Automatic" ParamName="DPOS" ContextIndex="4" NullableContextIndex="4" Range="0.0001" LockRanges="false" IsInDegrees="true" Offset="0" AutoCentre="false" />
-        <TraceInfo State="Automatic" ParamName="MPOS" ContextIndex="4" NullableContextIndex="4" Range="0.0001" LockRanges="false" IsInDegrees="true" Offset="0" AutoCentre="false" />
-        <TraceInfo State="Automatic" ParamName="MSPEED" ContextIndex="4" NullableContextIndex="4" Range="0.0001" LockRanges="false" IsInDegrees="true" Offset="0" AutoCentre="false" />
+        <TraceInfo State="Automatic" ParamName="DPOS" ContextIndex="6" NullableContextIndex="6" Range="0.0001" LockRanges="false" IsInDegrees="true" Offset="0" AutoCentre="false" />
+        <TraceInfo State="Automatic" ParamName="MPOS" ContextIndex="6" NullableContextIndex="6" Range="0.0001" LockRanges="false" IsInDegrees="true" Offset="0" AutoCentre="false" />
+        <TraceInfo State="Automatic" ParamName="MSPEED" ContextIndex="6" NullableContextIndex="6" Range="0.0001" LockRanges="false" IsInDegrees="true" Offset="0" AutoCentre="false" />
         <TraceInfo State="Off" ParamName="VP_SPEED" ContextIndex="2" NullableContextIndex="2" Range="0.0001" LockRanges="false" IsInDegrees="true" Offset="0" AutoCentre="false" />
-        <TraceInfo State="Automatic" ParamName="FE" ContextIndex="4" NullableContextIndex="4" Range="0.0001" LockRanges="false" IsInDegrees="true" Offset="0" AutoCentre="false" />
+        <TraceInfo State="Automatic" ParamName="FE" ContextIndex="6" NullableContextIndex="6" Range="0.0001" LockRanges="false" IsInDegrees="true" Offset="0" AutoCentre="false" />
         <TraceInfo State="Off" ParamName="DPOS" ContextIndex="1" NullableContextIndex="1" Range="10000000" LockRanges="false" IsInDegrees="true" Offset="0" AutoCentre="false" />
       </TraceInfos>
       <CursorInfos>
@@ -105,13 +107,13 @@
         <CursorInfo IsVisible="false" Position="1.2" TraceIndex="-1" />
       </CursorInfos>
       <RecentParamNames>
-        <Param Name="DRIVE_TORQUE" Age="131" />
-        <Param Name="DRIVE_VELOCITY" Age="112" />
-        <Param Name="FE" Age="81" />
-        <Param Name="MPOS" Age="81" />
-        <Param Name="MSPEED" Age="50" />
-        <Param Name="SPEED" Age="33" />
-        <Param Name="SYNC_CONTROL" Age="17" />
+        <Param Name="DRIVE_TORQUE" Age="180" />
+        <Param Name="DRIVE_VELOCITY" Age="154" />
+        <Param Name="FE" Age="116" />
+        <Param Name="MPOS" Age="109" />
+        <Param Name="MSPEED" Age="71" />
+        <Param Name="SPEED" Age="47" />
+        <Param Name="SYNC_CONTROL" Age="24" />
         <Param Name="VP_SPEED" Age="0" />
       </RecentParamNames>
       <Profiles>
@@ -132,11 +134,11 @@
           </ViewerSettings>
           <View3DSettings />
           <TraceInfos>
-            <TraceInfo State="Automatic" ParamName="DPOS" ContextIndex="4" NullableContextIndex="4" Range="0.0001" LockRanges="false" IsInDegrees="true" Offset="0" AutoCentre="false" />
-            <TraceInfo State="Automatic" ParamName="MPOS" ContextIndex="4" NullableContextIndex="4" Range="0.0001" LockRanges="false" IsInDegrees="true" Offset="0" AutoCentre="false" />
-            <TraceInfo State="Automatic" ParamName="MSPEED" ContextIndex="4" NullableContextIndex="4" Range="0.0001" LockRanges="false" IsInDegrees="true" Offset="0" AutoCentre="false" />
+            <TraceInfo State="Automatic" ParamName="DPOS" ContextIndex="6" NullableContextIndex="6" Range="0.0001" LockRanges="false" IsInDegrees="true" Offset="0" AutoCentre="false" />
+            <TraceInfo State="Automatic" ParamName="MPOS" ContextIndex="6" NullableContextIndex="6" Range="0.0001" LockRanges="false" IsInDegrees="true" Offset="0" AutoCentre="false" />
+            <TraceInfo State="Automatic" ParamName="MSPEED" ContextIndex="6" NullableContextIndex="6" Range="0.0001" LockRanges="false" IsInDegrees="true" Offset="0" AutoCentre="false" />
             <TraceInfo State="Off" ParamName="VP_SPEED" ContextIndex="2" NullableContextIndex="2" Range="0.0001" LockRanges="false" IsInDegrees="true" Offset="0" AutoCentre="false" />
-            <TraceInfo State="Automatic" ParamName="FE" ContextIndex="4" NullableContextIndex="4" Range="0.0001" LockRanges="false" IsInDegrees="true" Offset="0" AutoCentre="false" />
+            <TraceInfo State="Automatic" ParamName="FE" ContextIndex="6" NullableContextIndex="6" Range="0.0001" LockRanges="false" IsInDegrees="true" Offset="0" AutoCentre="false" />
             <TraceInfo State="Off" ParamName="DPOS" ContextIndex="1" NullableContextIndex="1" Range="10000000" LockRanges="false" IsInDegrees="true" Offset="0" AutoCentre="false" />
           </TraceInfos>
           <CursorInfos>
@@ -148,13 +150,13 @@
             <CursorInfo IsVisible="false" Position="1.2" TraceIndex="-1" />
           </CursorInfos>
           <RecentParamNames>
-            <Param Name="DRIVE_TORQUE" Age="131" />
-            <Param Name="DRIVE_VELOCITY" Age="112" />
-            <Param Name="FE" Age="81" />
-            <Param Name="MPOS" Age="81" />
-            <Param Name="MSPEED" Age="50" />
-            <Param Name="SPEED" Age="33" />
-            <Param Name="SYNC_CONTROL" Age="17" />
+            <Param Name="DRIVE_TORQUE" Age="180" />
+            <Param Name="DRIVE_VELOCITY" Age="154" />
+            <Param Name="FE" Age="116" />
+            <Param Name="MPOS" Age="109" />
+            <Param Name="MSPEED" Age="71" />
+            <Param Name="SPEED" Age="47" />
+            <Param Name="SYNC_CONTROL" Age="24" />
             <Param Name="VP_SPEED" Age="0" />
           </RecentParamNames>
         </Profile>
