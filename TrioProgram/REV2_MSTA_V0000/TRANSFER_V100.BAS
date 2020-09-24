@@ -63,7 +63,7 @@ VR(commands_trans).trans_pos_set_flag=0
 VR(infeed_pack_count)=(VR(infeed_pack_count)-VR(n_impressions))
 
 'SYNC(CONTROL, SYNC_TIME, [sync_position, SYNC_AXIS, pos1[, pos2 [,pos3]]])
-local_time_to_sync=400 'Time to complete the synchronisation movement in milliseconds ' was 300
+local_time_to_sync=200 'Time to complete the synchronisation movement in milliseconds ' was 300
 local_sync_position = local_transfer_start 'The captured position on the sync_axis
 local_pos1= 0 'Absolute position on the first axis on the base array
 WAIT UNTIL MPOS AXIS(ax_seal)<1000
@@ -75,7 +75,7 @@ IF VR(commands_trans).trans_not_ready=1 THEN
     VR(commands_trans).trans_not_ready=0
 ENDIF
 
-WAIT UNTIL SYNC_TIMER>150 '300
+WAIT UNTIL SYNC_TIMER>100 '300
 MOVEABS(VR(oc_close_pos)) AXIS(ax_oc)
 WAIT UNTIL MPOS AXIS(ax_oc) > (VR(oc_close_pos)-1000)
 MOVEABS(VR(trf_tool_pos)*10)

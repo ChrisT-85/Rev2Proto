@@ -8,13 +8,12 @@
       <AxesInUse>
         <Index>0</Index>
         <Index>1</Index>
-        <Index>2</Index>
-        <Index>5</Index>
-        <Index>6</Index>
-        <Index>7</Index>
+        <Index>4</Index>
         <Index>15</Index>
       </AxesInUse>
       <ParamsVisibility>
+        <Param Name="AXIS_ENABLE" IsVisible="true" />
+        <Param Name="FE_LATCH" IsVisible="true" />
         <Param Name="ADDAX_AXIS" IsVisible="true" />
         <Param Name="MOVE_COUNT" IsVisible="true" />
       </ParamsVisibility>
@@ -40,7 +39,7 @@
   <Content Name="Document_Program_MAX_TORQUES_V100" />
   <Content Name="Document_Program_TRANSFER_V100" />
   <Content Name="tool_FindReplaceWindow">
-    <Tool MainMode="QuickFind">
+    <Tool MainMode="FindInProject">
       <Options MatchWholeWord="true" MatchCase="true" SearchUp="false" UseRegularExpressions="false">
         <TargetItemTypes Mode="All" />
       </Options>
@@ -74,7 +73,7 @@
   </Content>
   <Content Name="tool_OscilloscopeControl">
     <Tool CurrentProfile="Profile 0">
-      <Config TriggerMode="Single" IsProgramTriggering="false" MaxChunkSize="8" TimePerDivision="1" ViewMode="Yt" DisplayTextInfo="false" IsExpanded="true" IsAutoHide="false" UseScopeDelay="false" ScopeDelay="0">
+      <Config TriggerMode="Single" IsProgramTriggering="false" MaxChunkSize="8" TimePerDivision="0.5" ViewMode="Yt" DisplayTextInfo="false" IsExpanded="true" IsAutoHide="false" UseScopeDelay="false" ScopeDelay="0">
         <ScopeTableInfo SamplesPerDivision="20" PointsPerDivision="10" FitToDisplay="false" IsAutoSamplesDataRangeStartAddress="true" SamplesDataRangeStartAddress="0" UseAutoReArm="true" Use_FIFO="false" FIFOName="MC_SCOPE_FIFO">
           <BlockDataRanges>
             <ScopeTableDataRange StartAddress="0" EndAddress="-1" Step="1" />
@@ -90,12 +89,12 @@
       </ViewerSettings>
       <View3DSettings />
       <TraceInfos>
-        <TraceInfo State="Automatic" ParamName="DPOS" ContextIndex="2" NullableContextIndex="2" Range="0.0001" LockRanges="false" IsInDegrees="true" Offset="0" AutoCentre="false" />
-        <TraceInfo State="Automatic" ParamName="MPOS" ContextIndex="2" NullableContextIndex="2" Range="0.0001" LockRanges="false" IsInDegrees="true" Offset="0" AutoCentre="false" />
-        <TraceInfo State="Automatic" ParamName="MSPEED" ContextIndex="2" NullableContextIndex="2" Range="0.0001" LockRanges="false" IsInDegrees="true" Offset="0" AutoCentre="false" />
-        <TraceInfo State="Automatic" ParamName="DRIVE_TORQUE" ContextIndex="2" NullableContextIndex="2" Range="0.0001" LockRanges="false" IsInDegrees="true" Offset="0" AutoCentre="false" />
-        <TraceInfo State="Automatic" ParamName="VP_SPEED" ContextIndex="2" NullableContextIndex="2" Range="0.0001" LockRanges="false" IsInDegrees="true" Offset="0" AutoCentre="false" />
-        <TraceInfo State="Off" ParamName="DPOS" ContextIndex="-1" NullableContextIndex="" Range="1" LockRanges="false" IsInDegrees="true" Offset="0" AutoCentre="false" />
+        <TraceInfo State="Automatic" ParamName="DPOS" ContextIndex="4" NullableContextIndex="4" Range="0.0001" LockRanges="false" IsInDegrees="true" Offset="0" AutoCentre="false" />
+        <TraceInfo State="Automatic" ParamName="MPOS" ContextIndex="4" NullableContextIndex="4" Range="0.0001" LockRanges="false" IsInDegrees="true" Offset="0" AutoCentre="false" />
+        <TraceInfo State="Automatic" ParamName="MSPEED" ContextIndex="4" NullableContextIndex="4" Range="0.0001" LockRanges="false" IsInDegrees="true" Offset="0" AutoCentre="false" />
+        <TraceInfo State="Off" ParamName="VP_SPEED" ContextIndex="2" NullableContextIndex="2" Range="0.0001" LockRanges="false" IsInDegrees="true" Offset="0" AutoCentre="false" />
+        <TraceInfo State="Automatic" ParamName="FE" ContextIndex="4" NullableContextIndex="4" Range="0.0001" LockRanges="false" IsInDegrees="true" Offset="0" AutoCentre="false" />
+        <TraceInfo State="Off" ParamName="DPOS" ContextIndex="1" NullableContextIndex="1" Range="10000000" LockRanges="false" IsInDegrees="true" Offset="0" AutoCentre="false" />
       </TraceInfos>
       <CursorInfos>
         <CursorInfo IsVisible="false" Position="0.2" TraceIndex="-1" />
@@ -106,16 +105,18 @@
         <CursorInfo IsVisible="false" Position="1.2" TraceIndex="-1" />
       </CursorInfos>
       <RecentParamNames>
-        <Param Name="DRIVE_TORQUE" Age="8" />
-        <Param Name="DRIVE_VELOCITY" Age="6" />
-        <Param Name="MPOS" Age="8" />
-        <Param Name="MSPEED" Age="4" />
-        <Param Name="SPEED" Age="2" />
+        <Param Name="DRIVE_TORQUE" Age="131" />
+        <Param Name="DRIVE_VELOCITY" Age="112" />
+        <Param Name="FE" Age="81" />
+        <Param Name="MPOS" Age="81" />
+        <Param Name="MSPEED" Age="50" />
+        <Param Name="SPEED" Age="33" />
+        <Param Name="SYNC_CONTROL" Age="17" />
         <Param Name="VP_SPEED" Age="0" />
       </RecentParamNames>
       <Profiles>
         <Profile Name="Profile 0">
-          <Config TriggerMode="Single" IsProgramTriggering="false" MaxChunkSize="8" TimePerDivision="1" ViewMode="Yt" DisplayTextInfo="false" IsExpanded="true" IsAutoHide="false" UseScopeDelay="false" ScopeDelay="0">
+          <Config TriggerMode="Single" IsProgramTriggering="false" MaxChunkSize="8" TimePerDivision="0.5" ViewMode="Yt" DisplayTextInfo="false" IsExpanded="true" IsAutoHide="false" UseScopeDelay="false" ScopeDelay="0">
             <ScopeTableInfo SamplesPerDivision="20" PointsPerDivision="10" FitToDisplay="false" IsAutoSamplesDataRangeStartAddress="true" SamplesDataRangeStartAddress="0" UseAutoReArm="true" Use_FIFO="false" FIFOName="MC_SCOPE_FIFO">
               <BlockDataRanges>
                 <ScopeTableDataRange StartAddress="0" EndAddress="-1" Step="1" />
@@ -131,12 +132,12 @@
           </ViewerSettings>
           <View3DSettings />
           <TraceInfos>
-            <TraceInfo State="Automatic" ParamName="DPOS" ContextIndex="2" NullableContextIndex="2" Range="0.0001" LockRanges="false" IsInDegrees="true" Offset="0" AutoCentre="false" />
-            <TraceInfo State="Automatic" ParamName="MPOS" ContextIndex="2" NullableContextIndex="2" Range="0.0001" LockRanges="false" IsInDegrees="true" Offset="0" AutoCentre="false" />
-            <TraceInfo State="Automatic" ParamName="MSPEED" ContextIndex="2" NullableContextIndex="2" Range="0.0001" LockRanges="false" IsInDegrees="true" Offset="0" AutoCentre="false" />
-            <TraceInfo State="Automatic" ParamName="DRIVE_TORQUE" ContextIndex="2" NullableContextIndex="2" Range="0.0001" LockRanges="false" IsInDegrees="true" Offset="0" AutoCentre="false" />
-            <TraceInfo State="Automatic" ParamName="VP_SPEED" ContextIndex="2" NullableContextIndex="2" Range="0.0001" LockRanges="false" IsInDegrees="true" Offset="0" AutoCentre="false" />
-            <TraceInfo State="Off" ParamName="DPOS" ContextIndex="-1" NullableContextIndex="" Range="1" LockRanges="false" IsInDegrees="true" Offset="0" AutoCentre="false" />
+            <TraceInfo State="Automatic" ParamName="DPOS" ContextIndex="4" NullableContextIndex="4" Range="0.0001" LockRanges="false" IsInDegrees="true" Offset="0" AutoCentre="false" />
+            <TraceInfo State="Automatic" ParamName="MPOS" ContextIndex="4" NullableContextIndex="4" Range="0.0001" LockRanges="false" IsInDegrees="true" Offset="0" AutoCentre="false" />
+            <TraceInfo State="Automatic" ParamName="MSPEED" ContextIndex="4" NullableContextIndex="4" Range="0.0001" LockRanges="false" IsInDegrees="true" Offset="0" AutoCentre="false" />
+            <TraceInfo State="Off" ParamName="VP_SPEED" ContextIndex="2" NullableContextIndex="2" Range="0.0001" LockRanges="false" IsInDegrees="true" Offset="0" AutoCentre="false" />
+            <TraceInfo State="Automatic" ParamName="FE" ContextIndex="4" NullableContextIndex="4" Range="0.0001" LockRanges="false" IsInDegrees="true" Offset="0" AutoCentre="false" />
+            <TraceInfo State="Off" ParamName="DPOS" ContextIndex="1" NullableContextIndex="1" Range="10000000" LockRanges="false" IsInDegrees="true" Offset="0" AutoCentre="false" />
           </TraceInfos>
           <CursorInfos>
             <CursorInfo IsVisible="false" Position="0.2" TraceIndex="-1" />
@@ -147,15 +148,20 @@
             <CursorInfo IsVisible="false" Position="1.2" TraceIndex="-1" />
           </CursorInfos>
           <RecentParamNames>
-            <Param Name="DRIVE_TORQUE" Age="8" />
-            <Param Name="DRIVE_VELOCITY" Age="6" />
-            <Param Name="MPOS" Age="8" />
-            <Param Name="MSPEED" Age="4" />
-            <Param Name="SPEED" Age="2" />
+            <Param Name="DRIVE_TORQUE" Age="131" />
+            <Param Name="DRIVE_VELOCITY" Age="112" />
+            <Param Name="FE" Age="81" />
+            <Param Name="MPOS" Age="81" />
+            <Param Name="MSPEED" Age="50" />
+            <Param Name="SPEED" Age="33" />
+            <Param Name="SYNC_CONTROL" Age="17" />
             <Param Name="VP_SPEED" Age="0" />
           </RecentParamNames>
         </Profile>
       </Profiles>
     </Tool>
   </Content>
+  <Content Name="Document_Program_TEST" />
+  <Content Name="Document_Program_MC_CONFIG" />
+  <Content Name="Document_EC_EXTEND_Guided_EC_EXTEND" />
 </Contents>

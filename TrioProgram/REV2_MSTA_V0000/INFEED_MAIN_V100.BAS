@@ -86,7 +86,7 @@ REPEAT
             REGIST(21,0,0,1,0)'REGIST(21, channel, source, edge, window)'falling edge
             local_pack_in=1
         ELSE
-            local_pack_size=(R_REGPOS(0)-local_pack_start)/109.5
+            local_pack_size=(R_REGPOS(0)-local_pack_start)/97.8
             PRINT #0, "Pack size: "; local_pack_size
             REGIST(21,0,0,0,0)'REGIST(21, channel, source, edge, window)'rising edge
             local_pack_in=0
@@ -101,11 +101,11 @@ REPEAT
             OR VR(alarm).al_any_alarm _
             OR VR(alarm).al_next_mc _
             OR VR(alarm).al_printer _
-            OR (local_pack_in=1 AND MPOS AXIS(ax_infeed)>(local_pack_start+VR(max_pack_size)*109.5)) THEN
+            OR (local_pack_in=1 AND MPOS AXIS(ax_infeed)>(local_pack_start+VR(max_pack_size)*97.8)) THEN
 
-        IF (local_pack_in=1 AND MPOS AXIS(ax_infeed)>(local_pack_start+VR(max_pack_size)*109.5)) THEN
+        IF (local_pack_in=1 AND MPOS AXIS(ax_infeed)>(local_pack_start+VR(max_pack_size)*97.8)) THEN
             PRINT #0, "New Max Pack"
-            local_pack_size=(MPOS AXIS(ax_infeed)-local_pack_start)/109.5
+            local_pack_size=(MPOS AXIS(ax_infeed)-local_pack_start)/97.8
         ENDIF
 
         PRINT #0, "ALARM POINT"

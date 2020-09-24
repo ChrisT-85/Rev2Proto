@@ -23,6 +23,7 @@
         <Item Type="basic" Name="REWIND_V100" FileName="REWIND_V100.BAS" Storage="internalStorage" Autorun="0" IsAutorun="False" />
         <Item Type="basic" Name="SEAL_V100" FileName="SEAL_V100.BAS" Storage="internalStorage" Autorun="0" IsAutorun="False" />
         <Item Type="basic" Name="STARTUP_V100" FileName="STARTUP_V100.BAS" Storage="internalStorage" Autorun="-1" IsAutorun="True" />
+        <Item Type="basic" Name="TEST" FileName="TEST.BAS" Storage="internalStorage" Autorun="0" IsAutorun="False" />
         <Item Type="basic" Name="TRANSFER_V100" FileName="TRANSFER_V100.BAS" Storage="internalStorage" Autorun="0" IsAutorun="False" />
     </Items>
 </Project>
