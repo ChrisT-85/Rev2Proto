@@ -18,6 +18,8 @@ VR(al_rem_err_oc)=0
 VR(al_rem_err_seal)=0
 VR(al_rem_err_outfeed)=0
 
+TICKS=60000
+
 loop:
 
 VR(axisstatus_infeed)=AXISSTATUS AXIS(ax_infeed)
@@ -216,6 +218,17 @@ IF (IN(i_next_mc_ok)=1 AND VR(commands_hmi).hmi_next_mc_nc=0)_
     VR(alarm).al_next_mc=1
 ELSE
     VR(alarm).al_next_mc=0
+ENDIF
+
+'ppm
+IF TICKS<0 THEN
+    TICKS=60000
+    IF VR(commands_conv).conv_infeed_split_mode=1 THEN
+        VR(ppm)=(VR(pack_speed_count)/2)
+    ELSE
+        VR(ppm)=VR(pack_speed_count)
+    ENDIF
+    VR(pack_speed_count)=0
 ENDIF
 
 'IF IN(i_reset_pb) THEN

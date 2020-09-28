@@ -142,16 +142,6 @@ REPEAT
             OR (MPOS AXIS(ax_stepper)> local_trf_step_needed AND VR(commands_seal).seal_pause=1) THEN
         CANCEL AXIS(ax_virtual_infeed)
     ENDIF
-'ppm
-    IF TICKS<0 THEN
-        TICKS=60000
-        IF VR(commands_conv).conv_infeed_split_mode=1 THEN
-            VR(ppm)=(VR(pack_speed_count)/2)
-        ELSE
-            VR(ppm)=VR(pack_speed_count)
-        ENDIF
-        VR(pack_speed_count)=0
-    ENDIF
 
 UNTIL IDLE AXIS(ax_virtual_infeed)
 
