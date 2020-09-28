@@ -18,7 +18,7 @@ VR(infeed_dec)=3000000
 VR(oc_open_pos)=0
 
 RUN"HMI_V100",proc_hmi
-'RUN"ANALOGUE",3
+RUN"ANALOGUE",proc_anal
 'RUN"GENERATE_DATA",proc_gen_data
 
 

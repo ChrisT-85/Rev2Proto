@@ -62,10 +62,10 @@ retry_loop:
 IF VR(commands_seal).seal_eject_cushion_up=1 AND VR(seal_eject_pos_bottom)<VR(seal_compress_pos) THEN
     MOVEABS(VR(seal_eject_pos_bottom)*10) AXIS(ax_seal)
     IF debug_seal=1 THEN PRINT #7,"Move Cushion Up Pos "
-    ELSE
-        MOVEABS(VR(seal_up_pos)*10) AXIS(6)
-        IF debug_seal=1 THEN PRINT #7,"Move to Atmos Pos "
-    ENDIF
+ELSE
+    MOVEABS(VR(seal_up_pos)*10) AXIS(6)
+    IF debug_seal=1 THEN PRINT #7,"Move to Atmos Pos "
+ENDIF
 
     REPEAT ' seal travelling up
     'record torque
@@ -111,17 +111,17 @@ IF VR(commands_seal).seal_eject_cushion_up=1 AND VR(seal_eject_pos_bottom)<VR(se
 ''        MOVEABS(seal_up_pos*10) AXIS(6)
 ''    ELSE
 
-    'seal_eject_cushion_up
-'    IF VR(seal_eject_pos_bottom)<VR(seal_compress_pos) THEN
-'        IF VR(commands_seal).seal_eject_cushion_up=1_
-'                AND local_eject_up_flag=0 _
-'                AND MPOS AXIS(ax_seal)>((VR(seal_eject_pos_bottom)/3)*10) _
-'                AND MSPEED AXIS(ax_seal)<=(VR(seal_eject_speed)*1000)+500 THEN
-'            MOVEMODIFY(VR(seal_up_pos)*10) AXIS(ax_seal)
-'            IF debug_seal=1 THEN PRINT #7,"Eject Cusion UP Complete"
-'            local_eject_up_flag=1
-'        ENDIF
-'    ENDIF
+'    'seal_eject_cushion_up
+    IF VR(seal_eject_pos_bottom)<VR(seal_compress_pos) THEN
+        IF VR(commands_seal).seal_eject_cushion_up=1_
+                AND local_eject_up_flag=0 _
+                AND MPOS AXIS(ax_seal)>((VR(seal_eject_pos_bottom)/3)*10) _
+                AND MSPEED AXIS(ax_seal)<=(VR(seal_eject_speed)*1000)+500 THEN
+            MOVEMODIFY(VR(seal_up_pos)*10) AXIS(ax_seal)
+            IF debug_seal=1 THEN PRINT #7,"Eject Cusion UP Complete"
+            local_eject_up_flag=1
+        ENDIF
+    ENDIF
 
 '   ' ENDIF
 

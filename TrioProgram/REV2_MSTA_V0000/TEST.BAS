@@ -1,15 +1,1 @@
 
-loop1:
-BASE (4)
-
-IF VR(159) THEN
-    MOVE (VR(film_length)*10)
-ENDIF
-
-WAIT UNTIL IDLE
-
-DEFPOS(0)
-WA(2500)
-
-GOTO loop1
-

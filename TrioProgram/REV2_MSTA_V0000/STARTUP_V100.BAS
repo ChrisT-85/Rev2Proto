@@ -111,7 +111,7 @@ CONSTANT "axis_RS_limit_active",10 '     bit10 - RS limit active
 '==========================================
 CONSTANT "proc_main", 1
 CONSTANT "proc_hmi", 2
-CONSTANT "proc_gen_data", 3
+CONSTANT "proc_anal",3
 CONSTANT "proc_max_torques", 4
 CONSTANT "proc_infeed_main", 5
 CONSTANT "proc_transfer", 6
@@ -219,6 +219,8 @@ CONSTANT "infeed_dec",34
 CONSTANT "infeed_pack_count",35
 CONSTANT "pack_speed_count",36
 CONSTANT "split_wait_pos",37
+CONSTANT "infeed_guide_num",38
+CONSTANT "pack_size",39
 
 
 'Outfeed
@@ -382,6 +384,34 @@ CONSTANT "seal_eject_pos_bottom",156
 CONSTANT "seal_count",157
 CONSTANT "seal_count1",158
 CONSTANT "seal_default_temp",159
+
+CONSTANT "eff_ppm_target",200
+CONSTANT "eff_percent",201
+CONSTANT "eff_ppm_live",202
+CONSTANT "eff_ppm_current",203
+CONSTANT "eff_ppm_possible",204
+CONSTANT "eff_cycle_single",205
+CONSTANT "eff_cycle_last",206
+CONSTANT "eff_batch_req",207
+CONSTANT "eff_batch_remaining",208
+CONSTANT "eff_batch_on",209
+CONSTANT "eff_batch_target_reached",210
+CONSTANT "eff_demo_ppm",211
+CONSTANT "eff_ppm_possible_flag",212
+CONSTANT "eff_ppm_front",213
+CONSTANT "eff_ppm_rear",214
+CONSTANT "eff_ppm_global",215
+CONSTANT "eff_tpm",216
+CONSTANT "eff_sat_time_remaining_target",217
+CONSTANT "eff_sat_time_remaining_live",218
+CONSTANT "eff_sat_percent_complete",219
+
+CONSTANT "Speed_Control_1",220
+CONSTANT "Speed_Control_2",221
+CONSTANT "Speed_Control_3",222
+CONSTANT "Speed_Control_4",223
+
+
 
 'CONSTANT "seal_gas_pos",45
 

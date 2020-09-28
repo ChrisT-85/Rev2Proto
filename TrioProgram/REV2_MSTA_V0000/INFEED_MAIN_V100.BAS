@@ -75,7 +75,7 @@ TICKS PROC(proc_infeed_regist)=1500
 BASE(ax_infeed)
 REGIST(21,0,0,0,0)'REGIST(21, channel, source, edge, window)'rising edge
 local_pack_in=0
-local_pack_size=(VR(min_pack_size)+VR(max_pack_size))/2
+VR(pack_size)=(VR(min_pack_size)+VR(max_pack_size))/2
 
 REPEAT
 'clock pulse
@@ -100,8 +100,8 @@ REPEAT
             REGIST(21,0,0,1,0)'REGIST(21, channel, source, edge, window)'falling edge
             local_pack_in=1
         ELSE
-            local_pack_size=(R_REGPOS(0)-local_pack_start)/97.8
-            PRINT #0, "Pack size: "; local_pack_size
+            VR(pack_size)=(R_REGPOS(0)-local_pack_start)/97.8
+            'PRINT #0, "Pack size: "; VR(pack_size)
             REGIST(21,0,0,0,0)'REGIST(21, channel, source, edge, window)'rising edge
             local_pack_in=0
         ENDIF
@@ -110,8 +110,8 @@ REPEAT
     IF (VR(commands_hmi).hmi_batch_end AND IDLE AXIS(ax_stepper)) THEN GOSUB batch_end
 'cycle stop
     IF IN(i_stop_pb)=0 OR IN(i_safety_general)=0_
-            OR local_pack_size> VR(max_pack_size) _
-            OR local_pack_size< VR(min_pack_size) _
+            OR VR(pack_size)> VR(max_pack_size) _
+            OR VR(pack_size)< VR(min_pack_size) _
             OR VR(alarm).al_any_alarm _
             OR VR(alarm).al_next_mc _
             OR VR(alarm).al_printer _
@@ -119,7 +119,7 @@ REPEAT
 
         IF (local_pack_in=1 AND MPOS AXIS(ax_infeed)>(local_pack_start+VR(max_pack_size)*97.8)) THEN
             PRINT #0, "New Max Pack"
-            local_pack_size=(MPOS AXIS(ax_infeed)-local_pack_start)/97.8
+            VR(pack_size)=(MPOS AXIS(ax_infeed)-local_pack_start)/97.8
         ENDIF
 
         PRINT #0, "ALARM POINT"
@@ -157,10 +157,10 @@ UNTIL IDLE AXIS(ax_virtual_infeed)
 
 IF VR(commands_trans).trans_not_ready=1 OR VR(commands_seal).seal_pause=1 THEN GOTO restart_trf
 
-IF local_pack_size> VR(max_pack_size) OR local_pack_size<VR(min_pack_size) THEN
-    PRINT #0, "Pack size: "; local_pack_size
-    IF local_pack_size>VR(max_pack_size)THEN VR(alarm).al_max_pack=1 'Set Max pack Alarm
-    IF local_pack_size<VR(min_pack_size) THEN VR(alarm).al_min_pack=1 ' Set Min Pack Alarm
+IF VR(pack_size)> VR(max_pack_size) OR VR(pack_size)<VR(min_pack_size) THEN
+    PRINT #0, "Pack size: "; VR(pack_size)
+    IF VR(pack_size)>VR(max_pack_size)THEN VR(alarm).al_max_pack=1 'Set Max pack Alarm
+    IF VR(pack_size)<VR(min_pack_size) THEN VR(alarm).al_min_pack=1 ' Set Min Pack Alarm
 ENDIF
 IF NOT IN(i_safety_general) THEN CANCEL AXIS(ax_outfeed)
 IF VR(alarm)<>0 THEN

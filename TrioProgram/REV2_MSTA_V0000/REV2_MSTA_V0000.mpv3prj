@@ -1,19 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project Version="1" VersionMinor="1" ProductId="400" ProductName="MC400">
+<Project Version="1" VersionMinor="1" ProductId="432" ProductName="MC4N ECAT">
     <Environment>
         <Software SoftwareVersion="4.4.1.19638" />
-        <Controller ControllerVersion="2.0299" ControllerFPGAVersion="0">
-            <Modules />
+        <Controller ControllerVersion="2.0300" ControllerFPGAVersion="11">
+            <Modules>
+                <Module ModuleId="39" FPGAVersion="11" />
+                <Module ModuleId="42" FPGAVersion="11" />
+            </Modules>
         </Controller>
     </Environment>
     <Items>
+        <Item Type="basic" Name="ANALOGUE" FileName="ANALOGUE.BAS" Storage="internalStorage" Autorun="0" IsAutorun="False" />
         <Item Type="basic" Name="AUTO_TENSION_V100" FileName="AUTO_TENSION_V100.BAS" Storage="internalStorage" Autorun="0" IsAutorun="False" />
         <Item Type="textFile" Name="EC_EXTEND" FileName="EC_EXTEND.TXT" Storage="internalStorage" />
         <Item Type="basic" Name="FILMFEED_V100" FileName="FILMFEED_V100.BAS" Storage="internalStorage" Autorun="0" IsAutorun="False" />
         <Item Type="basic" Name="HMI_V100" FileName="HMI_V100.BAS" Storage="internalStorage" Autorun="0" IsAutorun="False" />
         <Item Type="basic" Name="INFEED_MAIN_V100" FileName="INFEED_MAIN_V100.BAS" Storage="internalStorage" Autorun="0" IsAutorun="False" />
         <Item Type="basic" Name="INFEED_REGIST_V100" FileName="INFEED_REGIST_V100.BAS" Storage="internalStorage" Autorun="0" IsAutorun="False" />
-        <Item Type="basic" Name="JAWS_TEST" FileName="JAWS_TEST.BAS" Storage="internalStorage" Autorun="0" IsAutorun="False" />
         <Item Type="basic" Name="MAIN_V100" FileName="MAIN_V100.BAS" Storage="internalStorage" Autorun="0" IsAutorun="False" />
         <Item Type="basic" Name="MAX_TORQUES_V100" FileName="MAX_TORQUES_V100.BAS" Storage="internalStorage" Autorun="0" IsAutorun="False" />
         <Item Type="mcConfig" Name="MC_CONFIG" FileName="MC_CONFIG.MCC" Storage="internalStorage" />
