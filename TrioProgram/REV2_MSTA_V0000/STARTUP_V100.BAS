@@ -158,6 +158,7 @@ CONSTANT "hmi_next_mc_nc",7 '       bit7 - next machine alarm NC
 CONSTANT "hmi_printer_on",8 '       bit8 - printer_on
 CONSTANT "hmi_printer_al_bypass",9 'bit9 - printer alarm bypass
 CONSTANT "hmi_printer_al_nc",10 '   bit10 - printer_alarm NC
+CONSTANT "hmi_service_due",11 '   bit10 - printer_alarm NC
 '----------------------------------------------------------------
 
 CONSTANT "commands_mc",3
@@ -348,7 +349,7 @@ CONSTANT "seal_eject_cushion_up",8 '    bit8 - seal cushion eject up on
 CONSTANT "seal_eject_cushion_down",9 '  bit9 - seal cushion eject down on
 CONSTANT "seal_cushion_up",10 '         bit10 - seal cushion up o
 CONSTANT "seal_cushion_down",11 '       bit11 - seal cushion down o
-
+CONSTANT "seal_pause_aux",12
 '----------------------------------------------------------------
 'ax_seal 6---------------------------------
 CONSTANT "axisstatus_seal",131
@@ -384,6 +385,7 @@ CONSTANT "seal_eject_pos_bottom",156
 CONSTANT "seal_count",157
 CONSTANT "seal_count1",158
 CONSTANT "seal_default_temp",159
+CONSTANT "seal_service_due",160
 
 CONSTANT "eff_ppm_target",200
 CONSTANT "eff_percent",201

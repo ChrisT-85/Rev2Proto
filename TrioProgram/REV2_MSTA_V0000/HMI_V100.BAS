@@ -231,6 +231,15 @@ IF TICKS<0 THEN
     VR(pack_speed_count)=0
 ENDIF
 
+IF VR(seal_count)>1000 THEN
+    VR(seal_count1)=VR(seal_count1)+1
+ENDIF
+IF VR(seal_count1)>VR(seal_service_due) THEN
+    VR(commands_hmi).hmi_service_due=1
+ELSE
+    VR(commands_hmi).hmi_service_due=0
+ENDIF
+
 'IF IN(i_reset_pb) THEN
 '    VR(alarm).al_min_pack=0 ' Reset Min Pack Alarm
 '    VR(alarm).al_reg_film=0 ' Reg Film Error
