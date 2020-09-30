@@ -10,6 +10,7 @@
         <Index>1</Index>
         <Index>2</Index>
         <Index>4</Index>
+        <Index>6</Index>
         <Index>8</Index>
         <Index>15</Index>
       </AxesInUse>
@@ -71,12 +72,14 @@
         <Variable DisplayName="local_pack_size" ParamName="local_pack_size" Context="INFEED_MAIN_V100,5" />
         <Variable DisplayName="debug_seal" ParamName="debug_seal" Context="SEAL_V100,7" />
         <Variable DisplayName="seal_start" ParamName="seal_start" Context="SEAL_V100,7" />
+        <Variable DisplayName="debug_seal" ParamName="debug_seal" Context="SEAL_V100" />
+        <Variable DisplayName="seal_pause" ParamName="seal_pause" Context="SEAL_V100,7" />
       </Variables>
     </Tool>
   </Content>
   <Content Name="tool_OscilloscopeControl">
     <Tool CurrentProfile="Profile 0">
-      <Config TriggerMode="Single" IsProgramTriggering="false" MaxChunkSize="8" TimePerDivision="0.5" ViewMode="Yt" DisplayTextInfo="false" IsExpanded="true" IsAutoHide="false" UseScopeDelay="false" ScopeDelay="0">
+      <Config TriggerMode="Single" IsProgramTriggering="false" MaxChunkSize="8" TimePerDivision="1" ViewMode="Yt" DisplayTextInfo="false" IsExpanded="true" IsAutoHide="false" UseScopeDelay="false" ScopeDelay="0">
         <ScopeTableInfo SamplesPerDivision="20" PointsPerDivision="10" FitToDisplay="false" IsAutoSamplesDataRangeStartAddress="true" SamplesDataRangeStartAddress="0" UseAutoReArm="true" Use_FIFO="false" FIFOName="MC_SCOPE_FIFO">
           <BlockDataRanges>
             <ScopeTableDataRange StartAddress="0" EndAddress="-1" Step="1" />
@@ -108,18 +111,18 @@
         <CursorInfo IsVisible="false" Position="1.2" TraceIndex="-1" />
       </CursorInfos>
       <RecentParamNames>
-        <Param Name="DRIVE_TORQUE" Age="222" />
-        <Param Name="DRIVE_VELOCITY" Age="190" />
-        <Param Name="FE" Age="146" />
-        <Param Name="MPOS" Age="133" />
-        <Param Name="MSPEED" Age="89" />
-        <Param Name="SPEED" Age="59" />
-        <Param Name="SYNC_CONTROL" Age="30" />
+        <Param Name="DRIVE_TORQUE" Age="250" />
+        <Param Name="DRIVE_VELOCITY" Age="214" />
+        <Param Name="FE" Age="166" />
+        <Param Name="MPOS" Age="149" />
+        <Param Name="MSPEED" Age="101" />
+        <Param Name="SPEED" Age="67" />
+        <Param Name="SYNC_CONTROL" Age="34" />
         <Param Name="VP_SPEED" Age="0" />
       </RecentParamNames>
       <Profiles>
         <Profile Name="Profile 0">
-          <Config TriggerMode="Single" IsProgramTriggering="false" MaxChunkSize="8" TimePerDivision="0.5" ViewMode="Yt" DisplayTextInfo="false" IsExpanded="true" IsAutoHide="false" UseScopeDelay="false" ScopeDelay="0">
+          <Config TriggerMode="Single" IsProgramTriggering="false" MaxChunkSize="8" TimePerDivision="1" ViewMode="Yt" DisplayTextInfo="false" IsExpanded="true" IsAutoHide="false" UseScopeDelay="false" ScopeDelay="0">
             <ScopeTableInfo SamplesPerDivision="20" PointsPerDivision="10" FitToDisplay="false" IsAutoSamplesDataRangeStartAddress="true" SamplesDataRangeStartAddress="0" UseAutoReArm="true" Use_FIFO="false" FIFOName="MC_SCOPE_FIFO">
               <BlockDataRanges>
                 <ScopeTableDataRange StartAddress="0" EndAddress="-1" Step="1" />
@@ -151,13 +154,13 @@
             <CursorInfo IsVisible="false" Position="1.2" TraceIndex="-1" />
           </CursorInfos>
           <RecentParamNames>
-            <Param Name="DRIVE_TORQUE" Age="222" />
-            <Param Name="DRIVE_VELOCITY" Age="190" />
-            <Param Name="FE" Age="146" />
-            <Param Name="MPOS" Age="133" />
-            <Param Name="MSPEED" Age="89" />
-            <Param Name="SPEED" Age="59" />
-            <Param Name="SYNC_CONTROL" Age="30" />
+            <Param Name="DRIVE_TORQUE" Age="250" />
+            <Param Name="DRIVE_VELOCITY" Age="214" />
+            <Param Name="FE" Age="166" />
+            <Param Name="MPOS" Age="149" />
+            <Param Name="MSPEED" Age="101" />
+            <Param Name="SPEED" Age="67" />
+            <Param Name="SYNC_CONTROL" Age="34" />
             <Param Name="VP_SPEED" Age="0" />
           </RecentParamNames>
         </Profile>
@@ -173,4 +176,7 @@
     </Tool>
   </Content>
   <Content Name="Document_Program_ANALOGUE" />
+  <Content Name="tool_AnalogueIOControl">
+    <Tool IsPeriodicUpdateEnabled="true" />
+  </Content>
 </Contents>

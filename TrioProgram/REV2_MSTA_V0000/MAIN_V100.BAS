@@ -605,6 +605,7 @@ CANCEL(2) AXIS(ax_oc)
 CANCEL(2) AXIS(ax_seal)
 CANCEL(2) AXIS(ax_outfeed)
 CANCEL(2) AXIS(ax_filmfeedbrake)
+
 PRINT #0, "Cancel all moves"
 WA(500)
 OP(o_magnets_ssr,OFF) 'o_magnets_ssr

@@ -158,7 +158,9 @@ CONSTANT "hmi_next_mc_nc",7 '       bit7 - next machine alarm NC
 CONSTANT "hmi_printer_on",8 '       bit8 - printer_on
 CONSTANT "hmi_printer_al_bypass",9 'bit9 - printer alarm bypass
 CONSTANT "hmi_printer_al_nc",10 '   bit10 - printer_alarm NC
-CONSTANT "hmi_service_due",11 '   bit10 - printer_alarm NC
+CONSTANT "hmi_service_due",11 '   bit11 - service due banner
+CONSTANT "hmi_service_due_reset",12 '   bit12 - service due banner reset
+
 '----------------------------------------------------------------
 
 CONSTANT "commands_mc",3
@@ -173,7 +175,7 @@ CONSTANT "axis_enable_ax",4 ' Bit 0..7 -> axis enable AX0..7 WDOG bit15
 CONSTANT "servo_ax",5 ' Bit 0..7 -> servo AX0..7
 CONSTANT "ethercat_state",6
 CONSTANT "cubicle_temp", 7
-CONSTANT "batch_count",8
+'CONSTANT "batch_count",8
 CONSTANT "n_impressions",9
 CONSTANT "PPM",10 ' was 108 for data?
 
@@ -292,7 +294,7 @@ CONSTANT "commands_trans",90
 '---------------------------------- bit constants for commands_mc
 CONSTANT "trans_not_ready",0 '           bit0 - start film
 CONSTANT "trans_pos_set_flag",1 '          bit1 - reg film on
-'CONSTANT "film_print_speed_save",2 '    bit2 - Printer Speed Save
+CONSTANT "film_print_speed_save",2 '    bit2 - Printer Speed Save
 CONSTANT "trans_final_inc_on",3 '       bit4 - Final Increment On
 '----------------------------------------------------------------
 
@@ -387,6 +389,7 @@ CONSTANT "seal_count1",158
 CONSTANT "seal_default_temp",159
 CONSTANT "seal_service_due",160
 
+CONSTANT "batch_count",198
 CONSTANT "eff_ppm_target",200
 CONSTANT "eff_percent",201
 CONSTANT "eff_ppm_live",202

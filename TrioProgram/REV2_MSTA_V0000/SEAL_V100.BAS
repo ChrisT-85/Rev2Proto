@@ -24,6 +24,12 @@ VR(commands_seal).seal_pause=0
 VR(seal_crush_count)=0
 
 pack_crush_end_jump:
+
+IF VR(seal_speed)>111 AND VR(commands_seal).seal_cushion_up=0 THEN
+    VR(seal_speed)=111
+ENDIF
+
+
 SPEED AXIS(ax_seal)=(VR(seal_speed)*1000)
 ACCEL AXIS(ax_seal)=(VR(seal_acc)*1000)
 DECEL AXIS(ax_seal)=(VR(seal_dec)*1000)
@@ -31,7 +37,6 @@ DECEL AXIS(ax_seal)=(VR(seal_dec)*1000)
 
 IF VR(commands_seal).seal_eject_cushion_up=1 THEN
     MOVEABS(VR(seal_eject_pos_bottom)*10) AXIS(ax_seal)
-    IF debug_seal=1 THEN PRINT #7,"Move Cushion Up Pos "
     WA(20)
 
     REPEAT
@@ -52,7 +57,7 @@ IF VR(commands_seal).seal_eject_cushion_up=1 THEN
 ENDIF
 
 'cusion seal UP
-IF VR(commands_seal).seal_cusion_up=1 THEN
+IF VR(commands_seal).seal_cushion_up=1 THEN
     MOVEMODIFY(VR(seal_compress_pos)*10) AXIS(ax_seal)
     SPEED AXIS(ax_seal)=VR(seal_speed)*1000
     WA(20)
@@ -165,9 +170,10 @@ ELSE
     ENDIF
 ENDIF
 
-SPEED AXIS(ax_seal)=seal_speed*1000
+SPEED AXIS(ax_seal)=VR(seal_speed)*1000
 WAIT UNTIL MPOS AXIS(ax_seal)<36000
 VR(seal_count)=VR(seal_count)+1
+
 
 IF VR(commands_film).film_print_speed_save THEN VR(commands_seal).seal_start=0
 
@@ -178,7 +184,6 @@ CANCEL(2)
 WAIT IDLE
 
 VR(commands_seal).seal_pause=1
-VR(seal_crush_count)=0
 VR(seal_crush_count)=VR(seal_crush_count)+1
 
 MOVEABS(0) AXIS(ax_seal)

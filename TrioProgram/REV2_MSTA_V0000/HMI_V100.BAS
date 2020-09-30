@@ -233,11 +233,16 @@ ENDIF
 
 IF VR(seal_count)>1000 THEN
     VR(seal_count1)=VR(seal_count1)+1
+    VR(seal_service_due)=VR(seal_service_due)-1
 ENDIF
-IF VR(seal_count1)>VR(seal_service_due) THEN
+IF VR(seal_service_due)<=0 THEN
     VR(commands_hmi).hmi_service_due=1
 ELSE
     VR(commands_hmi).hmi_service_due=0
+ENDIF
+IF VR(commands_hmi).hmi_service_due_reset THEN
+    VR(seal_service_due)=1000
+    VR(commands_hmi).hmi_service_due_reset=0
 ENDIF
 
 'IF IN(i_reset_pb) THEN

@@ -189,7 +189,7 @@ WAIT UNTIL VR(infeed_pack_count)=0 OR IN(i_stop_pb)=0 OR IN(i_safety_general)=0
 WAIT UNTIL (MPOS AXIS(ax_transfer)<1000 AND MPOS AXIS(ax_seal)<4000)
 WA(3000)
 IF VR(commands_mc).mc_batch_end_flag=0 THEN GOTO batch_end
-WA(5000)
+WA(3000)
 CANCEL AXIS(ax_outfeed)
 VR(commands_seal).seal_bypass=0
 VR(commands_mc).mc_batch_end_flag=0

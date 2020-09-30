@@ -105,7 +105,7 @@
     <PositionSettings IsDocked="false" AnchorStyle="Right" SizeToContent="Manual" ResizeMode="CanResize" Left="NaN" Top="NaN" Width="800" Height="600" DockWidth="300" DockHeight="300" />
   </Content>
   <Content Name="pos_tool_AxisParametersControl">
-    <PositionSettings IsDocked="false" AnchorStyle="Right" SizeToContent="Width" ResizeMode="CanResize" Left="990" Top="478" Width="381" Height="300" DockWidth="300" DockHeight="300" />
+    <PositionSettings IsDocked="false" AnchorStyle="Right" SizeToContent="Width" ResizeMode="CanResize" Left="NaN" Top="NaN" Width="300" Height="300" DockWidth="300" DockHeight="300" />
   </Content>
   <Content Name="pos_tool_CompileCheckControl">
     <PositionSettings IsDocked="true" AnchorStyle="Bottom" SizeToContent="Manual" ResizeMode="CanResize" Left="NaN" Top="NaN" Width="300" Height="300" DockWidth="300" DockHeight="300" />
@@ -121,11 +121,5 @@
   </Content>
   <Content Name="pos_tool_OutputWindow">
     <PositionSettings IsDocked="true" AnchorStyle="Bottom" SizeToContent="Manual" ResizeMode="CanResize" Left="NaN" Top="NaN" Width="300" Height="300" DockWidth="300" DockHeight="300" />
-  </Content>
-  <Content Name="pos_tool_FindReplaceWindow">
-    <PositionSettings IsDocked="false" AnchorStyle="Right" SizeToContent="WidthAndHeight" ResizeMode="CanResize" Left="732" Top="167" Width="245" Height="320" DockWidth="300" DockHeight="300" />
-  </Content>
-  <Content Name="pos_tool_FindInProjectControl">
-    <PositionSettings IsDocked="false" AnchorStyle="Right" SizeToContent="Width" ResizeMode="CanResize" Left="1065" Top="384" Width="690" Height="357" DockWidth="300" DockHeight="300" />
   </Content>
 </Contents>
