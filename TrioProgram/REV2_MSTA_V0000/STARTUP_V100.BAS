@@ -77,7 +77,7 @@ CONSTANT "o_fan_cub",22 '           OUT 6
 'CONSTANT "o_spare27"=27 '          OUT 11
 'CONSTANT "o_spare28"=28 '          OUT 12
 'CONSTANT "o_spare29"=29 '          OUT 13
-'CONSTANT "o_spare30"=62 '          OUT 14
+'CONSTANT "o_spare30"=30 '          OUT 14
 'CONSTANT "o_spare31"=31 '          OUT 15
 
 ' Servo Axis
@@ -222,7 +222,7 @@ CONSTANT "infeed_dec",34
 CONSTANT "infeed_pack_count",35
 CONSTANT "pack_speed_count",36
 CONSTANT "split_wait_pos",37
-CONSTANT "infeed_guide_num",38
+CONSTANT "infeed_spare",38
 CONSTANT "pack_size",39
 
 
