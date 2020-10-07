@@ -97,7 +97,7 @@
       <TraceInfos>
         <TraceInfo State="Automatic" ParamName="DPOS" ContextIndex="6" NullableContextIndex="6" Range="0.0001" LockRanges="false" IsInDegrees="true" Offset="0" AutoCentre="false" />
         <TraceInfo State="Automatic" ParamName="MPOS" ContextIndex="6" NullableContextIndex="6" Range="0.0001" LockRanges="false" IsInDegrees="true" Offset="0" AutoCentre="false" />
-        <TraceInfo State="Automatic" ParamName="MSPEED" ContextIndex="8" NullableContextIndex="8" Range="2000" LockRanges="false" IsInDegrees="true" Offset="0" AutoCentre="false" />
+        <TraceInfo State="Automatic" ParamName="MSPEED" ContextIndex="8" NullableContextIndex="8" Range="0.0001" LockRanges="false" IsInDegrees="true" Offset="0" AutoCentre="false" />
         <TraceInfo State="Off" ParamName="VP_SPEED" ContextIndex="2" NullableContextIndex="2" Range="0.0001" LockRanges="false" IsInDegrees="true" Offset="0" AutoCentre="false" />
         <TraceInfo State="Automatic" ParamName="FE" ContextIndex="8" NullableContextIndex="8" Range="0.0001" LockRanges="false" IsInDegrees="true" Offset="0" AutoCentre="false" />
         <TraceInfo State="Off" ParamName="DPOS" ContextIndex="1" NullableContextIndex="1" Range="10000000" LockRanges="false" IsInDegrees="true" Offset="0" AutoCentre="false" />
@@ -111,13 +111,13 @@
         <CursorInfo IsVisible="false" Position="1.2" TraceIndex="-1" />
       </CursorInfos>
       <RecentParamNames>
-        <Param Name="DRIVE_TORQUE" Age="264" />
-        <Param Name="DRIVE_VELOCITY" Age="226" />
-        <Param Name="FE" Age="176" />
-        <Param Name="MPOS" Age="157" />
-        <Param Name="MSPEED" Age="107" />
-        <Param Name="SPEED" Age="71" />
-        <Param Name="SYNC_CONTROL" Age="36" />
+        <Param Name="DRIVE_TORQUE" Age="285" />
+        <Param Name="DRIVE_VELOCITY" Age="244" />
+        <Param Name="FE" Age="191" />
+        <Param Name="MPOS" Age="169" />
+        <Param Name="MSPEED" Age="116" />
+        <Param Name="SPEED" Age="77" />
+        <Param Name="SYNC_CONTROL" Age="39" />
         <Param Name="VP_SPEED" Age="0" />
       </RecentParamNames>
       <Profiles>
@@ -140,7 +140,7 @@
           <TraceInfos>
             <TraceInfo State="Automatic" ParamName="DPOS" ContextIndex="6" NullableContextIndex="6" Range="0.0001" LockRanges="false" IsInDegrees="true" Offset="0" AutoCentre="false" />
             <TraceInfo State="Automatic" ParamName="MPOS" ContextIndex="6" NullableContextIndex="6" Range="0.0001" LockRanges="false" IsInDegrees="true" Offset="0" AutoCentre="false" />
-            <TraceInfo State="Automatic" ParamName="MSPEED" ContextIndex="8" NullableContextIndex="8" Range="2000" LockRanges="false" IsInDegrees="true" Offset="0" AutoCentre="false" />
+            <TraceInfo State="Automatic" ParamName="MSPEED" ContextIndex="8" NullableContextIndex="8" Range="0.0001" LockRanges="false" IsInDegrees="true" Offset="0" AutoCentre="false" />
             <TraceInfo State="Off" ParamName="VP_SPEED" ContextIndex="2" NullableContextIndex="2" Range="0.0001" LockRanges="false" IsInDegrees="true" Offset="0" AutoCentre="false" />
             <TraceInfo State="Automatic" ParamName="FE" ContextIndex="8" NullableContextIndex="8" Range="0.0001" LockRanges="false" IsInDegrees="true" Offset="0" AutoCentre="false" />
             <TraceInfo State="Off" ParamName="DPOS" ContextIndex="1" NullableContextIndex="1" Range="10000000" LockRanges="false" IsInDegrees="true" Offset="0" AutoCentre="false" />
@@ -154,13 +154,13 @@
             <CursorInfo IsVisible="false" Position="1.2" TraceIndex="-1" />
           </CursorInfos>
           <RecentParamNames>
-            <Param Name="DRIVE_TORQUE" Age="264" />
-            <Param Name="DRIVE_VELOCITY" Age="226" />
-            <Param Name="FE" Age="176" />
-            <Param Name="MPOS" Age="157" />
-            <Param Name="MSPEED" Age="107" />
-            <Param Name="SPEED" Age="71" />
-            <Param Name="SYNC_CONTROL" Age="36" />
+            <Param Name="DRIVE_TORQUE" Age="285" />
+            <Param Name="DRIVE_VELOCITY" Age="244" />
+            <Param Name="FE" Age="191" />
+            <Param Name="MPOS" Age="169" />
+            <Param Name="MSPEED" Age="116" />
+            <Param Name="SPEED" Age="77" />
+            <Param Name="SYNC_CONTROL" Age="39" />
             <Param Name="VP_SPEED" Age="0" />
           </RecentParamNames>
         </Profile>

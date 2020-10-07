@@ -1,4 +1,7 @@
 **/Backup
 *.prg
 *.mpv3dlt
+*.mpv3ic
+*.mpv3prj
+*.user
 
