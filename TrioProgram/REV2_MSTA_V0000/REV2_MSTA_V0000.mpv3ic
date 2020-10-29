@@ -111,13 +111,13 @@
         <CursorInfo IsVisible="false" Position="1.2" TraceIndex="-1" />
       </CursorInfos>
       <RecentParamNames>
-        <Param Name="DRIVE_TORQUE" Age="285" />
-        <Param Name="DRIVE_VELOCITY" Age="244" />
-        <Param Name="FE" Age="191" />
-        <Param Name="MPOS" Age="169" />
-        <Param Name="MSPEED" Age="116" />
-        <Param Name="SPEED" Age="77" />
-        <Param Name="SYNC_CONTROL" Age="39" />
+        <Param Name="DRIVE_TORQUE" Age="306" />
+        <Param Name="DRIVE_VELOCITY" Age="262" />
+        <Param Name="FE" Age="206" />
+        <Param Name="MPOS" Age="181" />
+        <Param Name="MSPEED" Age="125" />
+        <Param Name="SPEED" Age="83" />
+        <Param Name="SYNC_CONTROL" Age="42" />
         <Param Name="VP_SPEED" Age="0" />
       </RecentParamNames>
       <Profiles>
@@ -154,13 +154,13 @@
             <CursorInfo IsVisible="false" Position="1.2" TraceIndex="-1" />
           </CursorInfos>
           <RecentParamNames>
-            <Param Name="DRIVE_TORQUE" Age="285" />
-            <Param Name="DRIVE_VELOCITY" Age="244" />
-            <Param Name="FE" Age="191" />
-            <Param Name="MPOS" Age="169" />
-            <Param Name="MSPEED" Age="116" />
-            <Param Name="SPEED" Age="77" />
-            <Param Name="SYNC_CONTROL" Age="39" />
+            <Param Name="DRIVE_TORQUE" Age="306" />
+            <Param Name="DRIVE_VELOCITY" Age="262" />
+            <Param Name="FE" Age="206" />
+            <Param Name="MPOS" Age="181" />
+            <Param Name="MSPEED" Age="125" />
+            <Param Name="SPEED" Age="83" />
+            <Param Name="SYNC_CONTROL" Age="42" />
             <Param Name="VP_SPEED" Age="0" />
           </RecentParamNames>
         </Profile>

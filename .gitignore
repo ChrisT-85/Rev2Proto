@@ -1,7 +1,38 @@
+#Trio
+
+# ignore all files in any directory named Backup
+
 **/Backup
+
+# ignore all files in any subfolder with these extensions
 *.prg
 *.mpv3dlt
 *.mpv3ic
 *.mpv3prj
 *.user
+*.mpv3rc
+
+#Beijer HMI
+
+# ignore all files in any directory named BuildFiles, DriverVariables and Temp
+**/BuildFiles/
+**/DriverVariables/
+**/Temp/
+
+# ignore all files in any subfolder with these extensions
+**/*.cri
+**/*.neo
+**/*.neoxaml
+**/*.cs
+**/*.ref
+**/*.xaml
+**/*.png
+**/*.jpg
+**/*.xml
+**/*.lng
+**/*.gif
+**/*.js
+
+# exclude ignore .cs if it is .Script.cs in any subfolder
+!**/*.Script.cs
 
